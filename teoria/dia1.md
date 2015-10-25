@@ -247,26 +247,26 @@ Ramas (Universos Paralelos)
 
 **GIT Working flow (local) - Fusiones (básico)**
 
-    - Nos situamos en la rama que absorberá (principal)
+- Nos situamos en la rama que absorberá (principal)
     ```
     git checkout RAMAPRINCIAL
     ```
 
-    - Hacemos el *merge*
+- Hacemos el *merge*
     ```
     git merge RAMASECUNDARIA
     ```
 
-    - Añadir comentario (o)
+- Añadir comentario (o)
 
-    - Guardar y salir (:x)
+- Guardar y salir (:x)
 
-    - Ramas fusionadas
+- Ramas fusionadas
     ```
     git branch
     ```
 
-    - Borramos rama
+- Borramos rama
     ```
     git branch -d NOMBRERAMA
     ```
