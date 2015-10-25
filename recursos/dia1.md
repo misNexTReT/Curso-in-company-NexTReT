@@ -15,7 +15,7 @@
 - [Pro Git](https://git-scm.com/book/es/v2)
 - [Cheat Sheet Git / Github](https://training.github.com/kit/downloads/es/github-git-cheat-sheet.pdf)
 - [Conversational Git](http://blog.anvard.org/conversational-git/)
-- [Git Internals](file:///Users/vlixes/Downloads/peepcode-git.pdf)
+- [Git Internals](https://git-scm.com/book/es/v2)
 - [Github Guides](https://guides.github.com/)
 - [Getting Git Right de Atlassian](https://es.atlassian.com/git/)
 - [Log logs estilo](http://git-scm.com/docs/pretty-formats)
@@ -111,6 +111,7 @@
 - [Jquery TimeAgo](http://timeago.yarp.com/)
 
 **Herramientas**
+- [stackedit - Editor Markdown Online](https://stackedit.io/editor)
 - [Carácteres especiales](https://msdn.microsoft.com/es-es/library/2yfce773(v=vs.94).aspx)
 - [Mastering MarkDown](https://guides.github.com/features/mastering-markdown/)
 - [Chrome Dev Tools](https://developer.chrome.com/devtools/docs/dom-and-styles)
