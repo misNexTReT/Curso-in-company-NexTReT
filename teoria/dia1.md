@@ -1058,7 +1058,14 @@ function era3 () {
 6 - Del total de trenes... ¿cuantos tengo parados?
 
 ```javascript
-    // Escribe tu solución
+    var trenesOperativos = 8;
+    var totalTrenes = 12;
+
+    function trenesParados(){
+    	for(var numeroTren = trenesOperativos + 1; numeroTren <= totalTrenes; numeroTren++){
+    		console.log("El tren numero "+numeroTren+" esta parado");
+    	};
+    };
 ```
 
 
