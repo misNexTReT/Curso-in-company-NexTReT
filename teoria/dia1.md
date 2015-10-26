@@ -850,7 +850,13 @@ function calcular (operacion) {
 4 - Refactoriza.. usando *for*.
 
 ```javascript
-    // Escribe tu solución
+        var trenesOperativos = 8;
+
+    function estadoDetalle () {
+    	for (var numeroTren = 1; numeroTren <= trenesOperativos; numeroTren++) {
+    		console.log("El tren numero "+numeroTren+" esta funcionando");
+    	};
+    };
 ```
 
 5 - Refactoriza.. usando *Do... While*.
