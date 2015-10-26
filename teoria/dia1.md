@@ -1272,7 +1272,18 @@ function testArreglos () {
 8 - **#simplifiquemos!** Quiero solo un bucle para todo.
 
 ```javascript
-    // Escribe tu solución
+    var trenesOperativos = 8;
+    var totalTrenes = 12;
+
+    function estadoDetalle () {
+    	for(var numeroTren = 1; numeroTren <= totalTrenes; numeroTren++) {
+    		if (numeroTren <= trenesOperativos) {
+    			console.log("El tren número "+numeroTren+" esta funcionando");
+    		}else {
+    			console.log("El tren número "+numeroTren+" esta parado");
+    		};		
+    	};
+    };
 ```
 
 9 - **#compliquemos!** Servicio nocturno en el tren 10.
