@@ -8,7 +8,14 @@
     El formato de la respuesta es *"x de x funcionando hoy"*.
 
 ```javascript
-    // Escribe tu solución
+       public function(){
+     
+     var numeroTrenesActivos = 2;
+     
+     var numeroTrenes = 10;
+     console.log(" trenes que estan funcionado "+numeroTrenesActivos+" y total de trenes "+numeroTrenes);
+  
+}
 ```
 
 
@@ -16,34 +23,49 @@
 
 ```javascript
     
-    public function(){
-     
-     var numeroTrenesActivos = 2;
-     var numeroTrenes = 10;
-     console.log(" trenes que hay funcionado "+numeroTrenesActivos+" trenes que hay "+numeroTrenes);
-  
-}
     
 
 
 3 - Refactoriza... usando *while*.
 
 ```javascript
-    // Escribe tu solución
+   function nombre(){
+   var numeroTrenes = 10;
+   var cont =1 ; 
+   while(numeroTrenes >= cont){
+     console.log("el numero de tren "+cont+" esta activo");
+     cont++;
+   }
+   }
+   
+   
 ```
 
 
 4 - Refactoriza.. usando *for*.
 
 ```javascript
-    // Escribe tu solución
+       function nombre(){
+   var numeroTrenes = 10;
+   var cont =0 ; 
+   for (var cont =0; cont<numeroTrenes;cont++){
+     console.log("el numero de tren "+cont+" esta activo");
+   }
+   }
 ```
 
 
 5 - Refactoriza.. usando *Do... While*.
 
 ```javascript
-    // Escribe tu solución
+   function nombre(){
+   var numeroTrenes = 10;
+   var cont =1 ; 
+   do{
+     console.log("el numero de tren "+cont+" esta activo");
+     cont++;
+   }while(numeroTrenes >= cont);
+   }
 ```
 
 
