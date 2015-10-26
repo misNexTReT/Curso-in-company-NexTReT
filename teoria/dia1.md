@@ -1371,6 +1371,60 @@ El 12 será destinado a cubrir esta necesidad, exactamente igual que el 10 anter
 *NOTA: EL TREN 3 SOLO FUNCIONA LOS SÁBADOS. Es necesario incluir el día de la semana en tu código*
 
 
+Opción 1
 ```javascript
-    // Escribe tu solución
+    var trenesOperativos = 8;
+    var totalTrenes = 12;
+    var diaSemana = "Sabado";
+    function estadoDetalle () {
+    	if (trenesOperativos > 0) {
+    		if(trenesOperativos == totalTrenes){
+    			console.log("Todos los trenes están funcionando");
+    		} else {
+    			for(var numeroTren = 1; numeroTren <= totalTrenes; numeroTren++) {
+    				if (numeroTren <= trenesOperativos  && numeroTren != 3) {
+    					console.log("El tren numero "+numeroTren+" esta funcionando");
+    				} else if (numeroTren == 10 || numeroTren == 12){
+    					console.log("IMPORTANTE: El tren numero "+numeroTren+" es nocturno");
+    				} else if (numeroTren == 3 && diaSemana == "Sabado"){
+    					console.log("El tren fiestero("+numeroTren+") esta funcionando.")
+    				} else {
+    					console.log("El tren numero "+numeroTren+" esta parado");
+    				};		
+    			};
+    		};
+    	} else {
+    		console.log("IMPORTANTE: Ningún tren esta funcionando");
+    	};
+    };
+```
+
+Opción 2
+```javascript
+    var trenesOperativos = 8;
+    var totalTrenes = 12;
+    var diaSemana = "Sabado";
+    function estadoDetalle () {
+    	if (trenesOperativos > 0) {
+    		if(trenesOperativos == totalTrenes){
+    			console.log("Todos los trenes están funcionando");
+    		} else {
+    			for(var numeroTren = 1; numeroTren <= totalTrenes; numeroTren++) {
+    				if (numeroTren <= trenesOperativos  && numeroTren != 3 && numeroTren != 10 && numeroTren != 12) {
+    					console.log("El tren numero "+numeroTren+" esta funcionando");
+    				} else if (numeroTren == 10 || numeroTren == 12){
+    					console.log("IMPORTANTE: El tren numero "+numeroTren+" es nocturno");
+    				} else if (numeroTren == 3 && diaSemana == "Sabado"){
+    					console.log("El tren fiestero("+numeroTren+") esta funcionando.")
+    				} else if (numeroTren == 3 && diaSemana != "Sabado"){
+    					console.log("El tren fiestero("+numeroTren+") funcionará el sabado.")
+    				} else {
+    					console.log("El tren numero "+numeroTren+" esta parado");
+    				};		
+    			};
+    		};
+    	} else {
+    		console.log("IMPORTANTE: Ningún tren esta funcionando");
+    	};
+    };
 ```
