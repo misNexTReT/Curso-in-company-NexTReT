@@ -20,11 +20,12 @@ howManyTrains(10,4);
 
 ```javascript
 function howManyTrains(total, running){
-    for (int i=0; i<total; i++)
-    if (i<running){
-        console.log("El tren "  (i+1) + " de " + total + " está funcionando hoy");
-    } else {
-        console.log("El tren "  (i+1) + " de " + total + " no está funcionando hoy");
+    for (var i=0; i<total; i++) {
+        if (i<running){
+            console.log("El tren " + (i+1) + " de " + total + " está funcionando hoy");
+        } else {
+            console.log("El tren " + (i+1) + " de " + total + " no está funcionando hoy");
+        }
     }
 }
 howManyTrains(10,4);
