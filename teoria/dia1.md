@@ -1311,7 +1311,28 @@ tren 10 se especifique que es nocturno. Independientemente de si esta parado o f
 10 - Refactoricemos - ¿Y si todos los trenes están en las vías funcionando o por el contrario si ninguno de los trenes esta funcionando?.
 
 ```javascript
-    // Escribe tu solución
+    var trenesOperativos = 8;
+    var totalTrenes = 12;
+
+    function estadoDetalle () {
+    	if (trenesOperativos > 0) {
+    		if(trenesOperativos == totalTrenes){
+    			console.log("Todos los trenes estan funcionando");
+    		} else {
+    			for(var numeroTren = 1; numeroTren <= totalTrenes; numeroTren++) {
+    				if (numeroTren <= trenesOperativos) {
+    					console.log("El tren numero "+numeroTren+" esta funcionando");
+    				} else if (numeroTren == 10){
+    					console.log("IMPORTANTE: El tren numero "+numeroTren+" es nocturno");
+    				} else {
+    					console.log("El tren numero "+numeroTren+" esta parado");
+    				};		
+    			};
+    		};
+    	} else {
+    		console.log("IMPORTANTE: Ningún tren esta funcionando");
+    	};
+    };
 ```
 
 11 - El servicio nocturno se queda un poco corto y necesitamos añadir un nuevo tren de refuerzo.
