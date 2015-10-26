@@ -1,7 +1,5 @@
 # Dia 2
 
-### Reintroducción a JS
-
 **Más información**
 
 - [Idiomatic js](https://github.com/rwaldron/idiomatic.js/tree/master/translations/es_ES)
