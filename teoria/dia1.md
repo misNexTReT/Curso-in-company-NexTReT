@@ -810,7 +810,13 @@ function calcular (operacion) {
     El formato de la respuesta es *"x de x funcionando hoy"*.
 
 ```javascript
-    // Escribe tu solución
+    var trenesOperativos = 8;
+    var totalTrenes = 12;
+    var estadoOperacional = " trenes funcionando hoy."
+
+    function estadoVia () {
+    	console.log(trenesOperativos+ " de "+totalTrenes+estadoOperacional);
+    };
 ```
 
 2 - Imprimimos por consola el estado de cada tren en movimiento de manera individualizada.
