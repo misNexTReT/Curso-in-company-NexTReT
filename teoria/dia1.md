@@ -822,7 +822,14 @@ function calcular (operacion) {
 2 - Imprimimos por consola el estado de cada tren en movimiento de manera individualizada.
 
 ```javascript
-    // Escribe tu solución
+    console.log("El tren numero "+1+" esta funcionando");
+    console.log("El tren numero "+2+" esta funcionando");
+    console.log("El tren numero "+3+" esta funcionando");
+    console.log("El tren numero "+4+" esta funcionando");
+    console.log("El tren numero "+5+" esta funcionando");
+    console.log("El tren numero "+6+" esta funcionando");
+    console.log("El tren numero "+7+" esta funcionando");
+    console.log("El tren numero "+8+" esta funcionando");
 ```
 
 
