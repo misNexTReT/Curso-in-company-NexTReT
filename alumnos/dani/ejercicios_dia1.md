@@ -8,9 +8,9 @@
     El formato de la respuesta es *"x de x funcionando hoy"*.
 
 ```javascript
-    var trenes = 10;
-    var trenesFuncionando = 6;
-    console.log(trenes + " de " + trenesFuncionando + " funcionando hoy");
+    var trenes = 12;
+    var trenesFuncionando = 8;
+    console.log(trenesFuncionando + " de " + trenes + " funcionando hoy");
 ```
 
 
@@ -24,21 +24,34 @@
 3 - Refactoriza... usando *while*.
 
 ```javascript
-    // Escribe tu solución
+    var trenes = 1;
+    while(trenes < 12) {
+        console.log("El tren " + trenes + " esta funcionando" );
+        trenes++;
+    }
 ```
 
 
 4 - Refactoriza.. usando *for*.
 
 ```javascript
-    // Escribe tu solución
+    var trenes = 1;
+    
+    for(var i=1;i<trenes;i++) {
+        console.log("El tren " + i + " esta funcionando" );
+    }
 ```
 
 
 5 - Refactoriza.. usando *Do... While*.
 
 ```javascript
-    // Escribe tu solución
+    var trenes = 0;
+
+    do {
+       trenes++;
+       console.log("El tren " + trenes + " esta funcionando" );
+    } while (trenes < 12);
 ```
 
 
