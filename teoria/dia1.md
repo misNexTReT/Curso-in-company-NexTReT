@@ -1291,7 +1291,20 @@ function testArreglos () {
 tren 10 se especifique que es nocturno. Independientemente de si esta parado o funcionando.*
 
 ```javascript
-    // Escribe tu solución
+    var trenesOperativos = 8;
+    var totalTrenes = 12;
+
+    function estadoDetalle () {
+    	for(var numeroTren = 1; numeroTren <= totalTrenes; numeroTren++) {
+    		if ((numeroTren <= trenesOperativos) && (numeroTren != 10)) {
+    			console.log("El tren numero "+numeroTren+" esta funcionando");
+    		} else if (numeroTren == 10){
+    			console.log("IMPORTANTE: El tren número "+numeroTren+" es nocturno");
+    		} else {
+    			console.log("El tren numero "+numeroTren+" esta parado");
+    		};		
+    	};
+    };
 ```
 
 
