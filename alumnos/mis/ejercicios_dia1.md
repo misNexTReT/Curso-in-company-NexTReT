@@ -35,21 +35,52 @@ howManyTrains(10,4);
 3 - Refactoriza... usando *while*.
 
 ```javascript
-    // Escribe tu solución
+function howManyTrains(total, running){
+    var i=0;
+    while (i<total) {
+        i++
+        if (i<=running){
+            console.log("El tren " + i + " de " + total + " está funcionando hoy");
+        } else {
+            console.log("El tren " + i + " de " + total + " no está funcionando hoy");
+        }
+    }
+}
+howManyTrains(10,4);
 ```
 
 
 4 - Refactoriza.. usando *for*.
 
 ```javascript
-    // Escribe tu solución
+function howManyTrains(total, running){
+    for (var i=1; i<=total; i++) {
+        if (i<=running){
+            console.log("El tren " + i + " de " + total + " está funcionando hoy");
+        } else {
+            console.log("El tren " + i + " de " + total + " no está funcionando hoy");
+        }
+    }
+}
+howManyTrains(10,4);
 ```
 
 
 5 - Refactoriza.. usando *Do... While*.
 
 ```javascript
-    // Escribe tu solución
+function howManyTrains(total, running){
+    var i=0;
+    do {
+        i++
+        if (i<=running){
+            console.log("El tren " + i + " de " + total + " está funcionando hoy");
+        } else {
+            console.log("El tren " + i + " de " + total + " no está funcionando hoy");
+        }
+    } while (i<total)
+}
+howManyTrains(10,4);
 ```
 
 
