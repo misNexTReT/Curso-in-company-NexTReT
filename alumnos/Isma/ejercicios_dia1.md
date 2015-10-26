@@ -8,7 +8,12 @@
     El formato de la respuesta es *"x de x funcionando hoy"*.
 
 ```javascript
-    // Escribe tu solución
+    var existentes;
+    var funcionando;
+    function mostrarOperativos(existente,funcionando) {
+        return texto = funcionando + "de " + existentes + "funcionando hoy";
+    }
+    console.log(mostrarOperativos(6,3));
 ```
 
 
