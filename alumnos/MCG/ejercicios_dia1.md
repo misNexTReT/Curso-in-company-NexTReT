@@ -28,12 +28,11 @@ function trenes(){
 ```javascript
     // Escribe tu solución
     function trenesConWhile(){
-        var i = 0;
         var x = 10;
         var y = 20;
-        while ((i >= x) && (i <= y)) {
-            console.log(i + " de " + y + " funcionando hoy");
-            i++;
+        while (x <= y) {
+            console.log(x + " de " + y + " funcionando hoy");
+            x++;
         }
     }
 ```
@@ -58,14 +57,13 @@ function trenes(){
 ```javascript
     // Escribe tu solución
     function trenesConDoWhile(){
-        var i = 0;
         var x = 10;
         var y = 20;
         do {
-            console.log(i + " de " + y + " funcionando hoy");
-            i++;
+            console.log(x + " de " + y + " funcionando hoy");
+            x++;
         }
-        while ((i >= x) && (i <= y));
+        while (x <= y);
     }
 ```
 
