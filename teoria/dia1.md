@@ -1072,7 +1072,19 @@ function era3 () {
 7 - Refactoricemos y juntemos los dos bucles dentro de una misma función. Así se imprime por consola tanto los trenes que estan funcionanado como los que estan parados
 
 ```javascript
-    // Escribe tu solución
+    var trenesOperativos = 8;
+    var totalTrenes = 12;
+
+    function estadoDetalle () {
+    	var numeroTren = 1;
+    	while (numeroTren <= trenesOperativos) {
+    		console.log("El tren numero "+numeroTren+" esta funcionando");
+    		numeroTren++;
+    	};
+    	for(var trenParado = trenesOperativos + 1; trenParado <= totalTrenes; trenParado++) {
+    		console.log("El tren numero "+trenParado+" esta parado");
+    	};
+    };
 ```
 
 
