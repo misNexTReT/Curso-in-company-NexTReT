@@ -8,18 +8,26 @@
     El formato de la respuesta es *"x de x funcionando hoy"*.
 
 ```javascript
-    function howManyTrains(total, running){
-    console.log(running + " de " + total + "estan funcionando hoy");
+function howManyTrains(total, running){
+    console.log(running + " de " + total + " estan funcionando hoy");
 }
 
-howManyTrains(10,10);
+howManyTrains(10,4);
 ```
 
 
 2 - Imprimimos por consola el estado de cada tren en movimiento de manera individualizada.
 
 ```javascript
-    // Escribe tu solución
+function howManyTrains(total, running){
+    for (int i=0; i<total; i++)
+    if (i<running){
+        console.log("El tren "  (i+1) + " de " + total + " está funcionando hoy");
+    } else {
+        console.log("El tren "  (i+1) + " de " + total + " no está funcionando hoy");
+    }
+}
+howManyTrains(10,4);
 ```
 
 
