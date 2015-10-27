@@ -229,7 +229,7 @@ Contamos con un sistema compuesto de un tanque principal y una cama (recipiente 
         this.capacidad = 40;
         this.dimensiones = "51cm";
         this.color = "gris claro";
-        this.nivelAgua = "29cm";
+        this.nivelAgua = 29;
     }
  
     var cama = function () {
@@ -240,7 +240,7 @@ Contamos con un sistema compuesto de un tanque principal y una cama (recipiente 
     var miCama = new cama();
     miCama.capacidad = 10;
     miCama.color = "rojo";
-    miCama.nivelAgua = "5cm";
+    miCama.nivelAgua = 5;
     console.log(miCama.capacidad + " | " + miCama.dimensiones + " | " + miCama.color + " | " + miCama.nivelAgua + " | " + miCama.sustrato);
 ```
 
@@ -249,6 +249,17 @@ Contamos con un sistema compuesto de un tanque principal y una cama (recipiente 
 
 ```javascript
     // Escribe tu solución
+    function addAgua (aguaNueva){
+        var capacidad = miCama.capacidad;
+        var nivelAgua = miCama.nivelAgua;
+        this.aguaNueva = aguaNueva;
+        if ((aguaNueva + nivelAgua) <= capacidad) {
+            nivelAgua = nivelAgua + aguaNueva;
+            console.log(nivelAgua);
+        } else {
+            alert("te has pasao tío");
+        }
+    }
 ```
 
 
