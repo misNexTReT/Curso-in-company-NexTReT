@@ -10,10 +10,11 @@
 ```javascript
     // Escribe tu solución
 ```
-var x = 10;
-var y = 20;
-console.log(x + " de" + y + "funcionando hoy");
-
+function trenes(){
+    var x = 10;
+    var y = 20;
+    console.log(x + " de " + y + " funcionando hoy");
+}
 
 2 - Imprimimos por consola el estado de cada tren en movimiento de manera individualizada.
 
@@ -26,6 +27,14 @@ console.log(x + " de" + y + "funcionando hoy");
 
 ```javascript
     // Escribe tu solución
+    function trenesConWhile(){
+        var x = 10;
+        var y = 20;
+        while (x <= y) {
+            console.log(x + " de " + y + " funcionando hoy");
+            x++;
+        }
+    }
 ```
 
 
@@ -33,6 +42,13 @@ console.log(x + " de" + y + "funcionando hoy");
 
 ```javascript
     // Escribe tu solución
+    function trenesConFor(){
+        var x = 10;
+        var y = 20;
+        for (x = 0; x <= y; x++) { 
+            console.log(x + " de " + y + " funcionando hoy");
+        }
+    }
 ```
 
 
@@ -40,6 +56,15 @@ console.log(x + " de" + y + "funcionando hoy");
 
 ```javascript
     // Escribe tu solución
+    function trenesConDoWhile(){
+        var x = 10;
+        var y = 20;
+        do {
+            console.log(x + " de " + y + " funcionando hoy");
+            x++;
+        }
+        while (x <= y);
+    }
 ```
 
 
