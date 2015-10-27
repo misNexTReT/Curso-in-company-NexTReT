@@ -10,7 +10,7 @@
 ```javascript
     var existentes;
     var funcionando;
-    function mostrarOperativos(existente,funcionando) {
+    function mostrarOperativos(existentes,funcionando) {
         return texto = funcionando + "de " + existentes + "funcionando hoy";
     }
     console.log(mostrarOperativos(6,3));
@@ -27,21 +27,50 @@
 3 - Refactoriza... usando *while*.
 
 ```javascript
-    // Escribe tu solución
+    var trenes = [];
+    trenes[1] = "funcionando";
+    trenes[2] = "parado";
+    trenes[3] = "funcionando";
+    trenes[4] = "parado";
+    trenes[5] = "funcionando";
+    var i = 1;
+    while(i <= 5){
+        console.log("El tren " + i +" esta " + trenes[i]);
+        i++;
+    };
 ```
 
 
 4 - Refactoriza.. usando *for*.
 
 ```javascript
-    // Escribe tu solución
+    var trenes = [];
+    trenes[1] = "funcionando";
+    trenes[2] = "parado";
+    trenes[3] = "funcionando";
+    trenes[4] = "parado";
+    trenes[5] = "funcionando";
+    var i = 1;
+    for(i = 1;i <= 5;i++){
+        console.log("El tren " + i +" esta " + trenes[i]);
+    };
 ```
 
 
 5 - Refactoriza.. usando *Do... While*.
 
 ```javascript
-    // Escribe tu solución
+    var trenes = [];
+    trenes[1] = "funcionando";
+    trenes[2] = "parado";
+    trenes[3] = "funcionando";
+    trenes[4] = "parado";
+    trenes[5] = "funcionando";
+    var i = 1;
+    do{
+        console.log("El tren " + i +" esta " + trenes[i]);
+        i++;
+    } while (i <= 5);
 ```
 
 
