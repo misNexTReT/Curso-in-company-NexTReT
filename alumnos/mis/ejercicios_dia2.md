@@ -259,18 +259,18 @@ var tanque = function (capacidad, largo, ancho, alto, color,nivelMaxAgua){
     
     this.agua = 0;
     
-    this.addAgua = function (cuanta){
-        console.log("Tenia " + this.agua + " litros de agua");
+    this.llenado = function (cuanta){
+        console.log("LLenado - Tenia " + this.agua + " litros de agua");
         this.agua+=cuanta;
-        console.log("Ahora tengo " + this.agua + " litros de agua");
+        console.log("LLenado - Ahora tengo " + this.agua + " litros de agua");
         this.desague();
     }
     
     this.desague = function (){
-        if (this.capacidad < this.agua) {
-            console.log("Tenia " + this.agua + " litros de agua");
-            this.agua=this.capacidad;
-            console.log("Ahora tengo " + this.agua + " litros de agua");
+        if (this.nivelMaxAgua < this.agua) {
+            console.log("Vaciado - Tenia " + this.agua + " litros de agua");
+            this.agua=this.nivelMaxAgua;
+            console.log("Vaciado - Ahora tengo " + this.agua + " litros de agua");
         }
     }
 };
@@ -285,7 +285,7 @@ var cama = function (capacidad, largo, ancho, alto, color,nivelMaxAgua,sustrato)
     
     this.agua = 0;
     
-    this.addAgua = function (cuanta){
+    this.llenado = function (cuanta){
         console.log("LLenado - Tenia " + this.agua + " litros de agua");
         this.agua+=cuanta;
         console.log("LLenado - Ahora tengo " + this.agua + " litros de agua");
@@ -293,9 +293,9 @@ var cama = function (capacidad, largo, ancho, alto, color,nivelMaxAgua,sustrato)
     }
     
     this.desague = function (){
-        if (this.capacidad < this.agua) {
+        if (this.nivelMaxAgua < this.agua) {
             console.log("Vaciado - Tenia " + this.agua + " litros de agua");
-            this.agua=this.capacidad;
+            this.agua=this.nivelMaxAgua;
             console.log("Vaciado - Ahora tengo " + this.agua + " litros de agua");
         }
     }
@@ -303,6 +303,18 @@ var cama = function (capacidad, largo, ancho, alto, color,nivelMaxAgua,sustrato)
 
 var miTanque = new tanque(40,51,25.5,30.5,"Gris Claro",29);
 var miCama = new cama(10,51,25.5,10,"Rojo",5,"Piedra volcánica");
+
+miTanque.llenado(7);
+miTanque.llenado(7);
+miTanque.llenado(7);
+miTanque.llenado(7);
+miTanque.llenado(7);
+miCama.llenado(7);
+miCama.llenado(7);
+miCama.llenado(7);
+miCama.llenado(7);
+miCama.llenado(7);
+
 ```
 
 
