@@ -323,7 +323,19 @@ miCama.llenado(7);
 - Incluir una función para quitar peces y vegetales.
 
 ```javascript
-    // Escribe tu solución
+tanque.prototype.peces=0;
+tanque.prototype.addPeces = function(cuanto){
+    console.log("LLenado - Tenia " + this.peces + " peces");
+    this.peces+=cuanto;
+    console.log("LLenado - Ahora tengo " + this.peces + " peces");
+}
+cama.prototype.plantas=0;
+cama.prototype.addPlantas = function(cuanto){
+    console.log("LLenado - Tenia " + this.plantas + " peces");
+    this.plantas+=cuanto;
+    console.log("LLenado - Ahora tengo " + this.plantas + " peces");
+}
+
 ```
 
 
