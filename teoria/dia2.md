@@ -532,13 +532,14 @@ El revisor del tren debe repartir tickets restaurante a los pasajeros para que p
 ```
 
 
-9 - Refactorizamos y dejamos todo preparado para incluirlo en nuestro html, usando lo que hemos aprendido.
+10 - Refactorizamos y dejamos todo preparado para incluirlo en nuestro html, usando lo que hemos aprendido.
+Evitando tambien que las funciones puedan ser accedidas desde la consola u otras librerias.
 
 ```javascript
     // Escribe tu solución
 ```
 
-10 (opcional) - Integrarlo con el html y bloquea el uso del de las funciones por consola
+11 (opcional) - Integrarlo con el html y bloquea el uso del de las funciones por consola
 
 ```javascript
 	// Ejercicio Opcional

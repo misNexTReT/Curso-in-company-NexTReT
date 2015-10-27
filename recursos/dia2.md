@@ -39,3 +39,6 @@
 - [This - Patrones de invocacion de funciones](http://fernetjs.com/2012/01/patrones-de-invocacion-de-funciones-this/)
 - [Expresiones Regulares](https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular#Las_expresiones_regulares_en_programaci.C3.B3n)
 - [Expresiones Regulares en js](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions)
+- [Undescore](http://underscorejs.org/#)
+- [Backbone](http://backbonejs.org/)
+- [TodoMVC](http://todomvc.com/)
