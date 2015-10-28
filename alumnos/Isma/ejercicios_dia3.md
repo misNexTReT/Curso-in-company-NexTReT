@@ -7,7 +7,7 @@
 1 - Sacar en el html la respuesta de OMDB para la pelicula Hackers
 
 ```javascript
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -43,8 +43,38 @@
 2 - Sacar en el html el tiempo meteorológico de Madrid, Barcelona y Valencia. 
 Nota: http://openweathermap.org te será de gran ayuda, busca la solución al error 401
 
-```javascript
-  // Tu solución
+```
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $.ajax({
+            dataType: "json",
+        url: "http://api.openweathermap.org/data/2.5/weather?q=Madrid&appid=bd82977b86bf27fb59a04b61b657fb6f"
+      })
+      .done(function( data, textStatus, jqXHR ) {
+            $("#resultados").text(data);
+       })
+       .fail(function( jqXHR, textStatus, errorThrown ) {
+         if ( console && console.log ) {
+             console.log( "La solicitud a fallado: " +  textStatus);
+         }
+      });// Write JavaScript here 
+    });
+  </script>
+<title>HTML5, CSS3 and JavaScript demo</title>
+</head>
+<body>
+<!-- Start your code here -->
+
+  <div id="resultados"></div>
+
+<!-- End your code here -->
+</body>
+</html>
 ```
 
 
