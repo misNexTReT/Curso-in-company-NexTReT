@@ -101,8 +101,8 @@ function peticionJqueryAjax (lat,long) {
 
 function muestraBicis(bicis){
   $(bicis.locations).each(function(){
-      var pos = new google.maps.LatLng(this.latitude,
-                                       this.longitude);
+      var pos = new google.maps.LatLng(this.latitud,
+                                       this.longitud);
     
       var infowindow = new google.maps.InfoWindow({
         map: map,
