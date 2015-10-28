@@ -36,7 +36,33 @@ peticionJqueryAjax ("http://www.omdbapi.com/?t=Hackers");
 Nota: http://openweathermap.org te será de gran ayuda, busca la solución al error 401
 
 ```javascript
-  // Tu solución
+function peticionJqueryAjax (city) {
+
+	var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + ",es&appid=bd82977b86bf27fb59a04b61b657fb6f";
+    $.ajax({
+        dataType: "json",
+        url: url,
+    })
+     .done(function( data, textStatus, jqXHR ) {
+         if ( console && console.log ) {
+             console.log( "La solicitud se ha completado correctamente." );
+             console.log( data );
+             --console.log( data.name + " tiene un tiempo " + data.weather[0].description);
+              
+             document.body.innerHTML  = data;
+         }
+     })
+     .fail(function( jqXHR, textStatus, errorThrown ) {
+         if ( console && console.log ) {
+             console.log( "La solicitud a fallado: " +  textStatus);
+         }
+    });
+
+}
+
+peticionJqueryAjax ("Madrid");
+peticionJqueryAjax ("Barcelona");
+peticionJqueryAjax ("Valencia");
 ```
 
 
