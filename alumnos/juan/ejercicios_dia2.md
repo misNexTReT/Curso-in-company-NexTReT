@@ -224,14 +224,68 @@ Contamos con un sistema compuesto de un tanque principal y una cama (recipiente 
  - Sustrato: Piedra volcánica
 
 ```javascript
-    // Escribe tu solución
+    
+    var tanque = function (capacidad , dimensiones, color, nivelMaximo){
+    
+         this.capacidad = capacidad;
+         this.dimensiones = dimensiones;
+         this.color = color;
+         this.nivelMaximo = nivelMaximo;
+
+    };
+    
+   var cama = function (sustrato){
+
+         this.sustrato = sustrato;
+
+    };
+    
+   cama.prototype = new tanque("capacidad" , "dimensiones", "color", "nivelMaximo");
+     
+    var var_cama = new cama("sustrato");
+   
+    
+    console.log(var_cama.capacidad +" "+var_cama.dimensiones+" "+ var_cama.color+" "+var_cama.nivelMaximo +" "+var_cama.sustrato);
+    
 ```
 
 
 2 - Añadamos el agua, para lo que necesitaremos un sistema para añadir y quitar agua, además de un desagüe automático que nos avise cuando el nivel del agua sea más alto de los esperado y evacue el sobrante.
 
 ```javascript
-    // Escribe tu solución
+    
+    
+        var tanque = function (capacidad, dimensiones, color, nivel) {
+        this.capacidad = capacidad;
+        this.dimensione = dimensiones;
+        this.color = color;
+        this.nivel = nivel;
+        this.agua = 0;
+        
+        //Añadimos 1 litro de agua
+        this.addAgua = function () {
+            if(this.agua < this.capacidad) {
+                this.agua++;
+                console.log('Hay ' + this.agua + ' litros en el tanque');
+            }else {
+                console.log('La tanque lleno');
+            }
+        }
+        
+        //Quitamos 1 litro de agua
+        this.removeAgua = function () {
+            if(this.agua > 0) {
+                this.agua--;
+                console.log('quendan ' + this.agua + ' litros en el tanque
+            }else {
+                console.log('La tanque esta vacio');
+            }
+        }
+    }
+    var pecera = new tanque(100,50,"azul",95);
+    
+    
+    
 ```
 
 
