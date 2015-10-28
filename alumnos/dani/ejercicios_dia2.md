@@ -340,7 +340,7 @@ Contamos con un sistema compuesto de un tanque principal y una cama (recipiente 
                 this.agua--;
                 console.log('Hay ' + this.agua + ' litros de agua');
             }else {
-                console.log('La pecera esta vacia');
+                console.log('La pecera esta vacia.');
             }
         }
     }

@@ -21,9 +21,7 @@ function initialize() {
         content: 'Te pille! :-)'
       });
       map.setCenter(pos);
-
-
-      peticionJqueryAjax (position.coords.latitude,position.coords.longitude);
+      
 
       //datos Primer Arranque
       muestraDatos(x ,position);
@@ -74,43 +72,7 @@ function muestraDatos(div, position){
         "<br>Última Conexión: " + position.timestamp;
 };
 
-function peticionJqueryAjax (lat,long) {
 
-	var url = "http://bicimad-api.herokuapp.com/api-v1/locations/nearest/?lat=" + lat + "&long=" + long + "&distance=1000000000";
-   console.log("funcion init")
-    $.ajax({
-        dataType: "json",
-        url: url,
-    })
-     .done(function( data, textStatus, jqXHR ) {
-         if ( console && console.log ) {
-             console.log( "La solicitud se ha completado correctamente." );
-             console.log( data);
-             muestraBicis(data);
-         }
-     })
-     .fail(function( jqXHR, textStatus, errorThrown ) {
-         if ( console && console.log ) {
-             console.log( "La solicitud a fallado: " +  textStatus);
-         }
-    });
-    
-    console.log("funcion terminada")
-
-}
-
-function muestraBicis(bicis){
-  $(bicis.locations).each(function(){
-      var pos = new google.maps.LatLng(this.latitude,
-                                       this.longitude);
-    
-      var infowindow = new google.maps.InfoWindow({
-        map: map,
-        position: pos,
-        content: 'HOla'
-      });
-  });
-}
 //datos Actualizacion
 a.onclick = function() {
         initialize();
