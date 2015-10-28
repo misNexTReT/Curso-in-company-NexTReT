@@ -224,20 +224,28 @@ Contamos con un sistema compuesto de un tanque principal y una cama (recipiente 
  - Sustrato: Piedra volcánica
 
 ```javascript
-    var tanque = function (capacidad, dimensiones, color, nivel) {
-        this.capacidad = capacidad;
-        this.dimensione = dimensiones;
-        this.color = color;
-        this.nivel = nivel;
-    }
     
-    var cama = function (capacidad, dimensiones, color, nivel, sustrato) {
-        this.capacidad = capacidad;
-        this.dimensione = dimensiones;
-        this.color = color;
-        this.nivel = nivel;
-        this.sustrato = sustrato;
-    }
+    var tanque = function (capacidad , dimensiones, color, nivelMaximo){
+    
+         this.capacidad = capacidad;
+         this.dimensiones = dimensiones;
+         this.color = color;
+         this.nivelMaximo = nivelMaximo;
+
+    };
+    
+   var cama = function (sustrato){
+
+         this.sustrato = sustrato;
+
+    };
+    
+   cama.prototype = new tanque("capacidad" , "dimensiones", "color", "nivelMaximo");
+     
+    var var_cama = new cama("sustrato");
+   
+    
+    console.log(var_cama.capacidad +" "+var_cama.dimensiones+" "+ var_cama.color+" "+var_cama.nivelMaximo +" "+var_cama.sustrato);
     
 ```
 
@@ -246,7 +254,8 @@ Contamos con un sistema compuesto de un tanque principal y una cama (recipiente 
 
 ```javascript
     
-    var tanque = function (capacidad, dimensiones, color, nivel) {
+    
+        var tanque = function (capacidad, dimensiones, color, nivel) {
         this.capacidad = capacidad;
         this.dimensione = dimensiones;
         this.color = color;
@@ -257,9 +266,9 @@ Contamos con un sistema compuesto de un tanque principal y una cama (recipiente 
         this.addAgua = function () {
             if(this.agua < this.capacidad) {
                 this.agua++;
-                console.log('Hay ' + this.agua + ' litros de agua');
+                console.log('Hay ' + this.agua + ' litros en el tanque');
             }else {
-                console.log('La pecera esta llena hasta los topes');
+                console.log('La tanque lleno');
             }
         }
         
@@ -267,22 +276,15 @@ Contamos con un sistema compuesto de un tanque principal y una cama (recipiente 
         this.removeAgua = function () {
             if(this.agua > 0) {
                 this.agua--;
-                console.log('Hay ' + this.agua + ' litros de agua');
+                console.log('quendan ' + this.agua + ' litros en el tanque');
             }else {
-                console.log('La pecera esta vacia');
+                console.log('La tanque esta vacio');
             }
         }
     }
-    var miTanque = new tanque(100,50,"azul",95);
+    var pecera = new tanque(100,50,"azul",95);
     
     
-    var cama = function (capacidad, dimensiones, color, nivel, sustrato) {
-        this.capacidad = capacidad;
-        this.dimensione = dimensiones;
-        this.color = color;
-        this.nivel = nivel;
-        this.sustrato = sustrato;
-    }
     
 ```
 
@@ -308,42 +310,5 @@ Contamos con un sistema compuesto de un tanque principal y una cama (recipiente 
 	- Cloro (CL2 mg/l)
 
 ```javascript
-    
-    var tanque = function (capacidad, dimensiones, color, nivel) {
-        this.capacidad = capacidad;
-        this.dimensione = dimensiones;
-        this.color = color;
-        this.nivel = nivel;
-        this.agua = function(cantidad, nitratos, nitritos, dureza, carbonatos, ph, cloro) {
-            this.cantidad = cantidad;
-            this.nitratos = nitratos;
-            this.nitritos = nitritos;
-            this.dureza = dureza;
-            this.carbonatos = carbonatos;
-            this.ph = ph;
-            this.cloro = cloro;
-        }
-        
-        //Añadimos 1 litro de agua
-        this.addAgua = function () {
-            if(this.agua < this.capacidad) {
-                this.agua++;
-                console.log('Hay ' + this.agua + ' litros de agua');
-            }else {
-                console.log('La pecera esta llena hasta los topes');
-            }
-        }
-        
-        //Quitamos 1 litro de agua
-        this.removeAgua = function () {
-            if(this.agua > 0) {
-                this.agua--;
-                console.log('Hay ' + this.agua + ' litros de agua');
-            }else {
-                console.log('La pecera esta vacia.');
-            }
-        }
-    }
-    var miTanque = new tanque(100,50,"azul",95);
-    miTanque.agua = new miTanque.agua(5,66,66,77,5,6);
+    // Escribe tu solución
 ```
