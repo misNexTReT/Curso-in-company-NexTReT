@@ -276,7 +276,7 @@ Contamos con un sistema compuesto de un tanque principal y una cama (recipiente 
         this.removeAgua = function () {
             if(this.agua > 0) {
                 this.agua--;
-                console.log('quendan ' + this.agua + ' litros en el tanque
+                console.log('quendan ' + this.agua + ' litros en el tanque');
             }else {
                 console.log('La tanque esta vacio');
             }
