@@ -23,21 +23,47 @@
 1 - Sumar cuadrados.
 
 ```javascript
-    // Escribe tu solución
+	function sumaCuadrados (a, b) {
+		return (a*a) + (b*b);
+	};
 ```
 
 
 2 - Contar las veces que aparece una letra en un texto.
 
 ```javascript
-    // Escribe tu solución
+	function cuentaLetra(frase, letra){
+		var total = 0;
+		for(var cuenta = 0; cuenta < frase.length; cuenta++){
+			if (frase.charAt(cuenta) == letra){
+				total++;
+			};
+		};
+		console.log("Tenemos "+total+" veces la letra \""+letra+"\" en la frase \""+frase+"\"" );
+	};
 ```
 
 
 3 - Contar las veces que aparece una letra en un texto, preguntando al usuario.
 
 ```javascript
-    // Escribe tu solución
+	function cuentaLetraUsuario (){
+		var frase = prompt("El texto, amigo");
+		var letra = prompt("una letra!");
+		if (typeof(frase) != "string" || typeof(letra) != "string") {
+			alert("mmm.... no me gustan los tramposos!");
+			return false;
+		} else {
+			var total = 0;
+			for(var cuenta = 0; cuenta < frase.length; cuenta++){
+				if(frase.charAt(cuenta) == letra){
+					total++
+				};
+			}
+			alert("Tenemos "+total+" veces la letra \""+letra+"\" en la frase \""+frase+"\"" );
+			return true;
+		};
+	};
 ```
 
 
@@ -153,7 +179,15 @@
 1 - Saber si hoy es un día par o impar.
 
 ```javascript
-    // Escribe tu solución
+	var miDiaEs = (function() {
+	    var hoy = new Date()
+	    if (new Date().getDate() % 2 == 0) {
+	        return function() { console.info("hoy es un día par") }
+	    } else {
+	        return function() { console.info("hoy es un día impar") }
+	    }
+	})()
+	miDiaEs();
 ```
 
 
@@ -256,14 +290,19 @@
 13 - Hagamos una lista de pasajeros (min. 6)
 
 ```javascript
-    // Escribe tu solución
+	var pasajero1 = "Alicia Gutierrez";
+	var pasajero2 = "Alfonso Gomez";
+	var pasajero3 = "Luis Navarro";
+	var pasajero4 = "Oscar Garcia";
+	var pasajero5 = "Andres Fernandez";
+	var pasajero6 = "Lucia Mellado";
 ```
 
 
 14 - Hagamos una lista de pasajeros efectiva usando Arrays
 
 ```javascript
-	// Escribe tu solución
+	var pasajeros = ["Alicia Gutierrez", "Alfonso Gomez", "Luis Navarro", "Oscar Garcia", "Andres Fernandez", "Lucia Mellado"];
 ```
 
 
@@ -271,7 +310,13 @@
 *Nota: El primer asiento del tren es el 1 y no el 0.*
 
 ```javascript
-    // Escribe tu solución
+	var pasajeros = ["Alicia Gutierrez", "Alfonso Gomez", "Luis Navarro", "Oscar Garcia", "Andres Fernandez", "Lucia Mellado"];
+
+	function listaPasajeros(){
+		for (var i = 0; i < pasajeros.length; i++) {
+			console.log("El pasajero "+pasajeros[i]+" tiene reservado el asiento "+(i+1));
+		};
+	};
 ```
 
 
@@ -279,7 +324,34 @@
 *Nota: Pensemos que a la larga pueden existir más listas.*
 
 ```javascript
-    // Escribe tu solución
+	var pasajeros = ["Alicia Gutierrez", "Alfonso Gomez", "Luis Navarro", "Oscar Garcia", "Andres Fernandez", "Lucia Mellado"];
+
+	function agregarPasajero(nombre, lista) {
+		lista.push(nombre);
+		return lista
+	};
+
+	function quitarPasajero(nombre, lista) {
+		if (lista.length == 0) {
+			console.log("La lista \""+lista+"\" esta vacía.");
+		} else {
+			for (var i = 0; i < lista.length; i++) {
+				if(lista[i] == nombre){
+					lista.splice(i, 1);
+					return lista;
+				} else if (i == lista.length -1){
+					console.log("El pasajero \""+nombre+"\" no encontrado!")
+				};
+			};
+		};
+	};
+	
+	/* Testeamos Funcionalidad
+		quitarPasajero("Luis Navarro", pasajeros)
+		agregarPasajero("Yo Mismo", pasajeros)
+		quitarPasajero("Yo Mismo", pasajeros)
+		
+	*/
 ```
 
 
@@ -287,7 +359,56 @@
 *Nota: Al borrar en el ejercicio anterior las posiciones de los pasajeros cambiaban y los billetes quedaban desactualizados.*
 
 ```javascript
-    // Escribe tu solución
+	var pasajeros = ["Alicia Gutierrez", "Alfonso Gomez", "Luis Navarro", "Oscar Garcia", "Andres Fernandez", "Lucia Mellado"];
+
+	function agregarPasajero(nombre, lista) {
+		if(lista.length == 0){
+			lista.push(nombre);
+			console.log("El pasajero "+nombre+" añadido con éxito, asiento asignado 0");
+		}else {
+			for (var i = 0; i < lista.length; i++) {
+				if (lista[i] == undefined) {
+					lista[i] = nombre;
+					console.log("El pasajero "+nombre+" añadido con éxito, asiento asignado "+(i+1));
+					return true
+				} else if (i == lista.length -1){
+					lista.push(nombre);
+					console.log("El pasajero "+nombre+" añadido con éxito, asiento asignado "+(i+1));
+					console.log("INFO: En esta lista no quedan asientos pendientes de asignación.")
+					return true
+				};
+			};
+		};
+	};
+
+
+	function quitarPasajero(nombre, lista) {
+		if (lista.length == 0) {
+			console.log("La lista \""+lista+"\" esta vacía.");
+			return false
+		} else {
+			for (var i = 0; i < lista.length; i++) {
+				if(lista[i] == nombre){
+					lista[i] = undefined;
+					console.log("El pasajero \""+nombre+"\" eliminado con éxito!")
+					return true;
+				} else if (i == lista.length -1){
+					console.log("El pasajero \""+nombre+"\" no encontrado!");
+					return false
+				};
+			};
+		};
+	};
+	
+		
+	/* Testeamos Funcionalidad
+	
+		quitarPasajero("Luis Navarro", pasajeros)
+		agregarPasajero("Yo Mismo", pasajeros)
+		quitarPasajero("Yo Mismo", pasajeros)
+		
+	*/
+	
 ```
 
 
@@ -304,7 +425,22 @@ Info:
    	- Hortaleza (21)
 
 ```javascript
-    // Escribe tu solución
+	var nuevasRutas = [ ["Tetuán", 12], ["Moncloa", 19], ["Hortaleza", 21] ];
+
+	function constructorDeTickets (estacion, tiempo) {
+		return function (nombre) {
+			console.log("Sr/a. "+nombre+".\n Muchas gracias por adquirir este ticket gratuito en el "+estacion+" express.\n El tiempo estimado de llegada es de "+tiempo+" minutos.\n Estamos trabajando en la mejora de nuestra vía principal, disculpe las molestias!");
+		};
+	}
+
+	var tetuanExpress = constructorDeTickets ("Tetuán", 12);
+	var moncloaExpress = constructorDeTickets (nuevasRutas[1][0], nuevasRutas[1][1]);
+	var hortalezaExpress = constructorDeTickets (nuevasRutas[2][0], nuevasRutas[2][1]);
+
+	tetuanExpress ("Pepe");
+	moncloaExpress ("Luis");
+	hortalezaExpress ("Hector");
+
 ```
 
 
@@ -418,7 +554,25 @@ Info:
 - (Inicial de la estación)(número de viajero) -> H1 (Hortaleza 1), T120 (Tetuan 120), M110 (Moncloa 110), etc...*
 
 ```javascript
-    // Escribe tu solución
+	var nuevasRutas = [ ["Tetuán", 12], ["Moncloa", 19], ["Hortaleza", 21] ];
+
+	function constructorDeTickets (estacion, tiempo) {
+		var numeroPasajero = 0;
+		return function (nombre) {
+			numeroPasajero++;
+			console.log("Sr/a. "+nombre+".\n Muchas gracias por adquirir este ticket gratuito en el "+estacion+" express.\n Billete Número:\t"+(estacion.charAt(0)+numeroPasajero)+"\n El tiempo estimado de llegada es de "+tiempo+" minutos.\n  Estamos trabajando en la mejora de nuestra vía principal, disculpe las molestias!");
+		};
+	}
+
+	var tetuanExpress = constructorDeTickets ("Tetuán", 12);
+	var moncloaExpress = constructorDeTickets (nuevasRutas[1][0], nuevasRutas[1][1]);
+	var hortalezaExpress = constructorDeTickets (nuevasRutas[2][0], nuevasRutas[2][1]);
+	
+	
+	tetuanExpress ("Pepe");
+	moncloaExpress ("Luis");
+	hortalezaExpress ("Hector");
+
 ```
 
 
@@ -435,7 +589,27 @@ El revisor del tren debe repartir tickets restaurante a los pasajeros para que p
 *Nota: La linea es única y el mismo tren cubre todo el trayecto.*
 
 ```javascript
-    // Escribe tu solución
+	function capacidad (ultimoPasajero, numeroMaximo) {
+
+		function sinSitios () {
+			console.log("IMPORTANTE: No queda sitio, por favor... saca los tickets restaurante!")
+			console.log ("Capacidad:\t"+ultimoPasajero+"/"+numeroMaximo);
+		};
+		function quedaSitio () {
+			console.log ("Capacidad:\t"+ultimoPasajero+"/"+numeroMaximo);
+		};
+
+		if (ultimoPasajero >= numeroMaximo){
+			sinSitios();
+		} else {
+			quedaSitio();
+		};
+
+	};
+	
+	capacidad(10, 50);
+	capacidad(50, 50);
+	capacidad(55, 50);
 ```
 
 
@@ -467,39 +641,85 @@ El revisor del tren debe repartir tickets restaurante a los pasajeros para que p
 1 - Definimos el objeto
 
 ```javascript
-	/* Escribe tu solución usando:
 	var cajeroAutomatico = {};
-	*/
 ```
 
 2 - Añadimos detalles básicos(clientes y propiedades)
 
 ```javascript
-	/* Escribe tu solución usando:
-	var clientesBD = [];
-	var cajeroAutomatico = {};
-	*/
+	var clientesBD = ["Alicia Gutierrez", "Alfonso Gomez", "Luis Navarro", "Oscar Garcia", "Andres Fernandez", "Lucia Mellado"];
+
+	var cajeroAutomatico = {
+	    empresaPropietaria: "SuperExpress",
+	    modelo: "Al-201",
+	    año: 2010,
+	    serie: "01 Beta",
+	    tipo: "Prototipo",
+	    unidadMedida: "metros",
+	    alto: 1,
+	    ancho: 0.5,
+	    largo: 0.5,
+	    unidadPeso: "Kg",
+	    peso: 600,
+	    materiales: ["acero", "plástico", "cables", "circuitos"],
+	    clientesAutorizados: clientesBD,
+	    moneda: "Euros",
+	    dineroDisponible: 65000
+	};
 ```
 
 
 3 - Añadimos detalles adicionales (volumen)
 
 ```javascript
-    // Escribe tu solución
+	cajeroAutomatico.volumen = cajeroAutomatico.alto * cajeroAutomatico.ancho * cajeroAutomatico.largo;
+	cajeroAutomatico.volumenMedida = cajeroAutomatico.unidadMedida.charAt(0) +3;
+
+	console.log("El volumen del cajero automático es de "+cajeroAutomatico.volumen+cajeroAutomatico.volumenMedida);
 ```
 
 
 4 - Añadimos funciones para quitar y añadir clientes
 
 ```javascript
-    // Escribe tu solución
+	function agregarCliente (nombre, lista) {
+	lista.push(nombre);
+	return lista;
+	}
+
+	function quitarCliente(nombre, lista) {
+		if (lista.length === 0) {
+			console.log("La lista esta vacía.");
+		} else {
+			for (var i = 0; i < lista.length; i++) {
+				if(lista[i] == nombre){
+					lista.splice(i, 1);
+					console.log("El Cliente \""+nombre+"\" eliminado con éxito!");
+					return lista;
+				} else if (i == lista.length -1){
+					console.log("El cliente \""+nombre+"\" no encontrado!");
+				}
+			}
+		}
+	}
+	
+	/* Testeamos Funcionalidad
+
+	agregarCliente ("yo mismo", clientesBD)
+	quitarCliente ("yo mismo", clientesBD)
+	quitarCliente ("yo mismo", clientesBD)
+
+	
+	*/
+	
 ```
 
 
 5 - Añadimos una propiedad para contabilizar las operaciones realizadas
 
 ```javascript
-    // Escribe tu solución
+	cajeroAutomatico["operaciones realizadas"] = 0;
+	console.info("Por el momento las operaciones realizadas son "+cajeroAutomatico["operaciones realizadas"]);
 ```
 
 
@@ -507,36 +727,724 @@ El revisor del tren debe repartir tickets restaurante a los pasajeros para que p
 *Nota: borrandoDatosVacios (objeto, propiedad, valorMinimo)*
 
 ```javascript
-    // Escribe tu solución
+	function borrandoDatosVacios (objeto, propiedad, valorMinimo) {
+	    if (objeto[propiedad] <= valorMinimo) {
+	        delete objeto[propiedad]
+	        return true
+	    } else {
+	        return false
+	    }
+	}
+	
+	/* Testeamos Funcionalidad
+
+	borrandoDatosVacios(cajeroAutomatico, "operaciones realizadas", 0);
+	
+	*/
 ```
 
 
 7 - Añadimos funciones de control de operaciones (contabilizar operaciones realizadas y fallidas) y funciones de administracción (agregar y quitar dinero)
 
 ```javascript
-    // Escribe tu solución
+	var debugMode = true;
+
+	function esNumero(n) {
+	  return !isNaN(parseFloat(n)) && isFinite(n);
+	}
+
+	function operacionRealizada () {
+	    if (isNaN(cajeroAutomatico["operaciones realizadas"]) || cajeroAutomatico["operaciones realizadas"] === undefined) {
+	        cajeroAutomatico["operaciones realizadas"] = 1;
+	        if(debugMode){
+	            console.info("Primera operación realizada con éxito!");
+	        }
+	    } else {
+	        cajeroAutomatico["operaciones realizadas"]++;
+	        if(debugMode){
+	            console.info("La operación #"+cajeroAutomatico["operaciones realizadas"]+" realizada con éxito!");
+	        }        
+	    }  
+	};
+
+	function operacionFallida () {
+	    if (isNaN(cajeroAutomatico["operaciones fallidas"]) || cajeroAutomatico["operaciones fallidas"] === undefined) {
+	        cajeroAutomatico["operaciones fallidas"] = 1;
+	        if(debugMode){
+	            console.warn("ERROR: Primera operación fallida!");
+	        }
+	    } else {
+	        cajeroAutomatico["operaciones fallidas"]++;
+	        if(debugMode){
+	            console.warn("ERROR: La operación #"+cajeroAutomatico["operaciones fallidas"]+" fallo!");
+	        }        
+	    }  
+	};
+
+
+	function agregarDinero (cantidad){
+	    if (esNumero(cantidad)) {
+	        cajeroAutomatico.dineroDisponible = cajeroAutomatico.dineroDisponible + cantidad;
+	        operacionRealizada();
+	        if(debugMode){
+	            console.info("Dinero disponible en el cajero, "+cajeroAutomatico.dineroDisponible);
+	        }
+	    } else {
+	        operacionFallida();
+	        if(debugMode){
+	            console.warn(cantidad+" No es un numero valido!");
+	        }
+	    }
+
+	}
+
+	function quitarDinero (cantidad){
+	    if (esNumero(cantidad)) {
+	        cajeroAutomatico.dineroDisponible = cajeroAutomatico.dineroDisponible - cantidad;
+	        operacionRealizada();
+	        if(debugMode){
+	            console.info("Dinero disponible en el cajero, "+cajeroAutomatico.dineroDisponible);
+	        }
+	    } else {
+	        operacionFallida();
+	        if(debugMode){
+	            console.warn(cantidad+" No es un numero valido!");
+	        }
+	    }
+	}
+
+	/* Testeamos Funcionalidad
+	
+	quitarDinero (1000)
+	quitarDinero ("Mucho!!")
+	agregarDinero (1000000)
+	agregarDinero ("Poco!")
+	
+	*/
 ```
 
 
 8 - Añadimos funciones para operaciones económicas y verificación de los clientes
 
 ```javascript
-    // Escribe tu solución
+function retirarEfectivo (nombre, cantidad) {
+    if (esCliente(nombre)){
+        if (esNumero(cantidad)) {
+            cajeroAutomatico.dineroDisponible = cajeroAutomatico.dineroDisponible - cantidad;
+            operacionRealizada();
+            if(debugMode){
+                console.info("Dinero disponible en el cajero, "+cajeroAutomatico.dineroDisponible);
+            }
+        } else {
+            operacionFallida();
+            if(debugMode){
+                console.warn(cantidad+" No es un numero valido!");
+            }
+        }
+    } else {
+            operacionFallida();
+            if(debugMode){
+                console.warn(nombre+" No eres un cliente de "+cajeroAutomatico.empresaPropietaria+"!");
+            }        
+    }    
+
+}
+
+function ingresarEfectivo (nombre, cantidad) {
+    if (esCliente(nombre)){
+        if (esNumero(cantidad)) {
+            cajeroAutomatico.dineroDisponible = cajeroAutomatico.dineroDisponible + cantidad;
+            operacionRealizada();
+            if(debugMode){
+                console.info("Dinero disponible en el cajero, "+cajeroAutomatico.dineroDisponible);
+            }
+        } else {
+            operacionFallida();
+            if(debugMode){
+                console.warn(cantidad+" No es un numero valido!");
+            }
+        }
+    } else {
+            operacionFallida();
+            if(debugMode){
+                console.warn(nombre+" No eres un cliente de "+cajeroAutomatico.empresaPropietaria+"!");
+            }        
+    }    
+
+}
+
+
+function esCliente(nombre) {
+	if (cajeroAutomatico.clientesAutorizados === 0) {
+	    if (debugMode) {
+		    console.warn("La lista esta vacía.");
+	    }
+	    return false;
+	} else {
+		for (var i = 0; i < cajeroAutomatico.clientesAutorizados.length; i++) {
+			if(cajeroAutomatico.clientesAutorizados[i] == nombre){
+				if (debugMode) {
+		            console.info(nombre+" eres cliente de "+cajeroAutomatico.empresaPropietaria);
+				}
+				return true;
+			} else if (i == cajeroAutomatico.clientesAutorizados.length -1){
+				if (debugMode) {
+		            console.warn(nombre+" no encontrado!");
+				}
+				return false;
+			}
+		}
+	}
+}
+
+/* Testeamos Funcionalidad
+
+	ingresarEfectivo ("Yo mismo", 1000);
+	ingresarEfectivo ("Oscar Garcia", "Poco!");
+	ingresarEfectivo ("Oscar Garcia", 10);
+	retirarEfectivo("Yo mismo", 1000);
+	retirarEfectivo ("Oscar Garcia", "Muchoo!");
+	retirarEfectivo ("Oscar Garcia", 10000);
+	
+*/
 ```
 
 
 9 - Creamos un log detallado y una cuenta total
 
 ```javascript
-    // Escribe tu solución
+	'use strict';
+	/* VARIABLES */
+	var debugMode = true;
+
+	var clientesBD = ["Alicia Gutierrez", "Alfonso Gomez", "Luis Navarro", "Oscar Garcia", "Andres Fernandez", "Lucia Mellado"];
+
+	var cajeroAutomatico = {
+	    empresaPropietaria: "SuperExpress",
+	    modelo: "Al-201",
+	    año: 2010,
+	    serie: "01 Beta",
+	    tipo: "Prototipo",
+	    unidadMedida: "metros",
+	    alto: 1,
+	    ancho: 0.5,
+	    largo: 0.5,
+	    unidadPeso: "Kg",
+	    peso: 600,
+	    materiales: ["acero", "plástico", "cables", "circuitos"],
+	    clientesAutorizados: clientesBD,
+	    moneda: "Euros",
+	    dineroDisponible: 65000
+	};
+
+	cajeroAutomatico.volumen = cajeroAutomatico.alto * cajeroAutomatico.ancho * cajeroAutomatico.largo;
+	cajeroAutomatico.volumenMedida = cajeroAutomatico.unidadMedida.charAt(0) +3;
+
+	/* FUNCIONES VERIFICACIÓN */
+
+	/**
+	 * Añade información sobre todo lo que ocurre en cajeroAutomatico.log.(logNUMERO).
+	 * Actualiza cajeroAutomatico.logTotal con operaciones fallidas y operaciones realizadas.
+	 * @param {string} tipo - "info" o "error".
+	 * @param {string} origen - "usuario", "maquina" o "administrador".
+	 * @param {string} codigo - código de error
+	 * @param {string} detalles - Descripción del error.
+	 */
+	function dataLog (tipo, origen, codigo, detalles) {
+	    cajeroAutomatico["operaciones fallidas"] = cajeroAutomatico["operaciones fallidas"] || 0;
+	    cajeroAutomatico["operaciones realizadas"] = cajeroAutomatico["operaciones realizadas"] || 0;
+	    cajeroAutomatico.logTotal = cajeroAutomatico.logTotal || 1;
+	    cajeroAutomatico.log = cajeroAutomatico.log || [];
+	    cajeroAutomatico.logTotal = cajeroAutomatico["operaciones fallidas"] + cajeroAutomatico["operaciones realizadas"];
+	    cajeroAutomatico.log[cajeroAutomatico.logTotal] = [cajeroAutomatico.logTotal, tipo, origen, codigo, detalles ]
+
+	}
+
+
+	function esCliente(nombre) {
+		if (cajeroAutomatico.clientesAutorizados === 0) {
+		    if (debugMode) {
+			    console.warn("La lista esta vacía.");
+		    }
+		    return false;
+		} else {
+			for (var i = 0; i < cajeroAutomatico.clientesAutorizados.length; i++) {
+				if(cajeroAutomatico.clientesAutorizados[i] == nombre){
+					if (debugMode) {
+			            console.info(nombre+" eres cliente de "+cajeroAutomatico.empresaPropietaria);
+					}
+					return true;
+				} else if (i == cajeroAutomatico.clientesAutorizados.length -1){
+					if (debugMode) {
+			            console.warn(nombre+" no encontrado!");
+					}
+					return false;
+				}
+			}
+		}
+	}
+
+	function esNumero(n) {
+	  return !isNaN(parseFloat(n)) && isFinite(n);
+	}
+
+	function operacionRealizada () {
+	    if (isNaN(cajeroAutomatico["operaciones realizadas"]) || cajeroAutomatico["operaciones realizadas"] === undefined) {
+	        cajeroAutomatico["operaciones realizadas"] = 1;
+	        if(debugMode){
+	            console.info("Primera operación realizada con éxito!");
+	        }
+	    } else {
+	        cajeroAutomatico["operaciones realizadas"]++;
+	        if(debugMode){
+	            console.info("La operación #"+cajeroAutomatico["operaciones realizadas"]+" realizada con éxito!");
+	        }        
+	    }  
+	}
+
+	function operacionFallida () {
+	    if (isNaN(cajeroAutomatico["operaciones fallidas"]) || cajeroAutomatico["operaciones fallidas"] === undefined) {
+	        cajeroAutomatico["operaciones fallidas"] = 1;
+	        if(debugMode){
+	            console.warn("ERROR: Primera operación fallida!");
+	        }
+	    } else {
+	        cajeroAutomatico["operaciones fallidas"]++;
+	        if(debugMode){
+	            console.warn("ERROR: La operación #"+cajeroAutomatico["operaciones fallidas"]+" fallo!");
+	        }        
+	    }  
+	}
+
+	function borrandoDatosVacios (objeto, propiedad, valorMinimo) {
+	    if (objeto[propiedad] <= valorMinimo) {
+	        delete objeto[propiedad];
+	        return true;
+	    } else {
+	        return false;
+	    }
+	}
+
+
+	/* FUNCIONES INTERACCIÓN */
+
+	function retirarEfectivo (nombre, cantidad) {
+	    if (esCliente(nombre)){
+	        if (esNumero(cantidad)) {
+	            cajeroAutomatico.dineroDisponible = cajeroAutomatico.dineroDisponible - cantidad;
+	            operacionRealizada();
+	            dataLog ("info", "usuario", 1, "Retirada de "+cantidad+cajeroAutomatico.moneda+" por "+nombre);
+	            if(debugMode){
+	                console.info("Dinero disponible en el cajero, "+cajeroAutomatico.dineroDisponible);
+	            }
+	            return true;
+	        } else {
+	            operacionFallida();
+	            dataLog ("error", "usuario", 2, "Retirada fallida por "+cantidad+" errónea. Usuario: "+nombre);
+	            if(debugMode){
+	                console.warn(cantidad+" No es un numero valido!");
+	            }
+	            return false;
+	        }
+	    } else {
+	            operacionFallida();
+	            dataLog ("error", "usuario", 3, nombre+" No es cliente");
+	            if(debugMode){
+	                console.warn(nombre+" No eres un cliente de "+cajeroAutomatico.empresaPropietaria+"!");
+	            }
+	            return false;
+	    }    
+
+	}
+
+	function ingresarEfectivo (nombre, cantidad) {
+	    if (esCliente(nombre)){
+	        if (esNumero(cantidad)) {
+	            cajeroAutomatico.dineroDisponible = cajeroAutomatico.dineroDisponible + cantidad;
+	            operacionRealizada();
+	            dataLog ("info", "usuario", 4, "Ingreso de "+cantidad+cajeroAutomatico.moneda+" por "+nombre);
+	            if(debugMode){
+	                console.info("Dinero disponible en el cajero, "+cajeroAutomatico.dineroDisponible);
+	            }
+	            return true;
+	        } else {
+	            operacionFallida();
+	            dataLog ("error", "usuario", 5, "Ingreso fallido por "+cantidad+" - errónea. Usuario: "+nombre);
+	            if(debugMode){
+	                console.warn(cantidad+" No es un numero valido!");
+	            }
+	            return false;
+	        }
+	    } else {
+	            operacionFallida();
+	            dataLog ("error", "usuario", 6, nombre+" No es cliente");
+	            if(debugMode){
+	                console.warn(nombre+" No eres un cliente de "+cajeroAutomatico.empresaPropietaria+"!");
+	            }
+	            return false;
+	    }    
+
+	}
+
+	function agregarDinero (cantidad){
+	    if (esNumero(cantidad)) {
+	        cajeroAutomatico.dineroDisponible = cajeroAutomatico.dineroDisponible + cantidad;
+	        operacionRealizada();
+	        dataLog ("info", "administrador", 7, "Ingreso de "+cantidad+cajeroAutomatico.moneda);
+	        if(debugMode){
+	            console.info("Dinero disponible en el cajero, "+cajeroAutomatico.dineroDisponible);
+	        }
+	        return true;
+	    } else {
+	        operacionFallida();
+	        dataLog ("error", "administrador", 8, "Ingreso fallido por "+cantidad+" - errónea.");
+	        if(debugMode){
+	            console.warn(cantidad+" No es un numero valido!");
+	        }
+	        return false;
+	    }
+
+	}
+
+	function quitarDinero (cantidad){
+	    if (esNumero(cantidad)) {
+	        cajeroAutomatico.dineroDisponible = cajeroAutomatico.dineroDisponible - cantidad;
+	        operacionRealizada();
+	        dataLog ("info", "administrador", 9, "Retirada de "+cantidad+cajeroAutomatico.moneda);
+	        if(debugMode){
+	            console.info("Dinero disponible en el cajero, "+cajeroAutomatico.dineroDisponible);
+	        }
+	        return true;
+	    } else {
+	        operacionFallida();
+	        dataLog ("error", "administrador", 10, "Retirada fallida por "+cantidad+" - errónea.");
+	        if(debugMode){
+	            console.warn(cantidad+" No es un numero valido!");
+	        }
+	        return false;
+	    }
+	}
+
+	function agregarCliente (nombre, lista) {
+	    lista.push(nombre);
+	    operacionRealizada();
+	    dataLog ("info", "administrador", 11, "Ingreso de "+nombre+" a la base de datos de clientes");
+	    return true;
+	}
+
+	function quitarCliente(nombre, lista) {
+		if (lista.length === 0) {
+		    if (debugMode) {
+			    console.log("La lista esta vacía.");
+		    }
+			operacionFallida();
+			dataLog ("error", "maquina", 12, "Eliminacion de "+nombre+" fallida. Base de datos, vacía.");
+			return false;
+		} else {
+			for (var i = 0; i < lista.length; i++) {
+				if(lista[i] == nombre){
+					lista.splice(i, 1);
+					if(debugMode) {
+					    console.log("El Cliente \""+nombre+"\" eliminado con éxito!");
+					    console.log(lista);
+					}
+					operacionRealizada();
+	                dataLog ("info", "administrador", 13, "Eliminado "+nombre+" de la base de datos de clientes");
+					return true;
+				} else if (i == lista.length -1){
+				    if(debugMode) {
+					    console.log("El cliente \""+nombre+"\" no encontrado!");
+				    }
+					operacionFallida();
+			        dataLog ("error", "maquina", 14, "Eliminacion de "+nombre+" fallida. Cliente inexistente.");
+				    return false;
+				}
+			}
+		}
+	}
+	
+	/* Testeamos Funcionalidad
+
+	agregarCliente ("yo mismo", clientesBD)
+	quitarCliente ("yo mismo", clientesBD)
+	quitarCliente ("yo mismo", clientesBD)
+	quitarDinero (1000)
+	quitarDinero ("Mucho!!")
+	agregarDinero (1000000)
+	agregarDinero ("Poco!")
+	ingresarEfectivo ("Yo mismo", 1000);
+	ingresarEfectivo ("Alicia Gutierrez", "Poco!");
+	ingresarEfectivo ("Alicia Gutierrez", 10);
+	retirarEfectivo("Yo mismo", 1000)
+	ingresarEfectivo ("Alicia Gutierrez", "Muchoo!");
+	ingresarEfectivo ("Alicia Gutierrez", 10000);
+	borrandoDatosVacios(cajeroAutomatico, "operaciones realizadas", 0);
+	
+	*/
+	
 ```
 
 
-10 - Refactorizamos y dejamos todo preparado para incluirlo en nuestro html, usando lo que hemos aprendido.
-Evitando tambien que las funciones puedan ser accedidas desde la consola u otras librerias.
+10 - Refactorizamos y dejamos todo preparado para incluirlo en nuestro html, usando lo que hemos aprendido. 
+	Evitando tambien que las funciones puedan ser accedidas desde la consola u otras librerias.
 
 ```javascript
-    // Escribe tu solución
+	var myApp = myApp || {};
+
+	myApp = (function (w){
+		'use strict';
+	/* VARIABLES */
+	var debugMode = true;
+
+	var clientesBD = ["Alicia Gutierrez", "Alfonso Gomez", "Luis Navarro", "Oscar Garcia", "Andres Fernandez", "Lucia Mellado"];
+
+	var cajeroAutomatico = {
+	    empresaPropietaria: "SuperExpress",
+	    modelo: "Al-201",
+	    "año": 2010,
+	    serie: "01 Beta",
+	    tipo: "Prototipo",
+	    unidadMedida: "metros",
+	    alto: 1,
+	    ancho: 0.5,
+	    largo: 0.5,
+	    unidadPeso: "Kg",
+	    peso: 600,
+	    materiales: ["acero", "plástico", "cables", "circuitos"],
+	    clientesAutorizados: clientesBD,
+	    moneda: "Euros",
+	    dineroDisponible: 65000
+	};
+
+	cajeroAutomatico.volumen = cajeroAutomatico.alto * cajeroAutomatico.ancho * cajeroAutomatico.largo;
+	cajeroAutomatico.volumenMedida = cajeroAutomatico.unidadMedida.charAt(0) +3;
+
+	/* FUNCIONES VERIFICACIÓN */
+
+	/**
+	 * Añade información sobre todo lo que ocurre en cajeroAutomatico.log.(logNUMERO).
+	 * Actualiza cajeroAutomatico.logTotal con operaciones fallidas y operaciones realizadas.
+	 * @param {string} tipo - "info" o "error".
+	 * @param {string} origen - "usuario", "maquina" o "administrador".
+	 * @param {string} codigo - código de error
+	 * @param {string} detalles - Descripción del error.
+	 */
+	function dataLog (tipo, origen, codigo, detalles) {
+	    cajeroAutomatico["operaciones fallidas"] = cajeroAutomatico["operaciones fallidas"] || 0;
+	    cajeroAutomatico["operaciones realizadas"] = cajeroAutomatico["operaciones realizadas"] || 0;
+	    cajeroAutomatico.logTotal = cajeroAutomatico.logTotal || 1;
+	    cajeroAutomatico.log = cajeroAutomatico.log || [];
+	    cajeroAutomatico.logTotal = cajeroAutomatico["operaciones fallidas"] + cajeroAutomatico["operaciones realizadas"];
+	    cajeroAutomatico.log[cajeroAutomatico.logTotal] = [cajeroAutomatico.logTotal, tipo, origen, codigo, detalles ];
+
+	}
+
+
+	function esCliente(nombre) {
+		if (cajeroAutomatico.clientesAutorizados === 0) {
+		    if (debugMode) {
+			    console.warn("La lista esta vacía.");
+		    }
+		    return false;
+		} else {
+			for (var i = 0; i < cajeroAutomatico.clientesAutorizados.length; i++) {
+				if(cajeroAutomatico.clientesAutorizados[i] == nombre){
+					if (debugMode) {
+			            console.info(nombre+" eres cliente de "+cajeroAutomatico.empresaPropietaria);
+					}
+					return true;
+				} else if (i == cajeroAutomatico.clientesAutorizados.length -1){
+					if (debugMode) {
+			            console.warn(nombre+" no encontrado!");
+					}
+					return false;
+				}
+			}
+		}
+	}
+
+	function esNumero(n) {
+	  return !isNaN(parseFloat(n)) && isFinite(n);
+	}
+
+	function operacionRealizada () {
+	    if (isNaN(cajeroAutomatico["operaciones realizadas"]) || cajeroAutomatico["operaciones realizadas"] === undefined) {
+	        cajeroAutomatico["operaciones realizadas"] = 1;
+	        if(debugMode){
+	            console.info("Primera operación realizada con éxito!");
+	        }
+	    } else {
+	        cajeroAutomatico["operaciones realizadas"]++;
+	        if(debugMode){
+	            console.info("La operación #"+cajeroAutomatico["operaciones realizadas"]+" realizada con éxito!");
+	        }        
+	    }  
+	}
+
+	function operacionFallida () {
+	    if (isNaN(cajeroAutomatico["operaciones fallidas"]) || cajeroAutomatico["operaciones fallidas"] === undefined) {
+	        cajeroAutomatico["operaciones fallidas"] = 1;
+	        if(debugMode){
+	            console.warn("ERROR: Primera operación fallida!");
+	        }
+	    } else {
+	        cajeroAutomatico["operaciones fallidas"]++;
+	        if(debugMode){
+	            console.warn("ERROR: La operación #"+cajeroAutomatico["operaciones fallidas"]+" fallo!");
+	        }        
+	    }  
+	}
+
+	function borrandoDatosVacios (objeto, propiedad, valorMinimo) {
+	    if (objeto[propiedad] <= valorMinimo) {
+	        delete objeto[propiedad];
+	        return true;
+	    } else {
+	        return false;
+	    }
+	}
+
+
+	/* FUNCIONES INTERACCIÓN */
+
+	function retirarEfectivo (nombre, cantidad) {
+	    if (esCliente(nombre)){
+	        if (esNumero(cantidad)) {
+	            cajeroAutomatico.dineroDisponible = cajeroAutomatico.dineroDisponible - cantidad;
+	            operacionRealizada();
+	            dataLog ("info", "usuario", 1, "Retirada de "+cantidad+cajeroAutomatico.moneda+" por "+nombre);
+	            if(debugMode){
+	                console.info("Dinero disponible en el cajero, "+cajeroAutomatico.dineroDisponible);
+	            }
+	            return true;
+	        } else {
+	            operacionFallida();
+	            dataLog ("error", "usuario", 2, "Retirada fallida por "+cantidad+" errónea. Usuario: "+nombre);
+	            if(debugMode){
+	                console.warn(cantidad+" No es un numero valido!");
+	            }
+	            return false;
+	        }
+	    } else {
+	            operacionFallida();
+	            dataLog ("error", "usuario", 3, nombre+" No es cliente");
+	            if(debugMode){
+	                console.warn(nombre+" No eres un cliente de "+cajeroAutomatico.empresaPropietaria+"!");
+	            }
+	            return false;
+	    }    
+
+	}
+
+	function ingresarEfectivo (nombre, cantidad) {
+	    if (esCliente(nombre)){
+	        if (esNumero(cantidad)) {
+	            cajeroAutomatico.dineroDisponible = cajeroAutomatico.dineroDisponible + cantidad;
+	            operacionRealizada();
+	            dataLog ("info", "usuario", 4, "Ingreso de "+cantidad+cajeroAutomatico.moneda+" por "+nombre);
+	            if(debugMode){
+	                console.info("Dinero disponible en el cajero, "+cajeroAutomatico.dineroDisponible);
+	            }
+	            return true;
+	        } else {
+	            operacionFallida();
+	            dataLog ("error", "usuario", 5, "Ingreso fallido por "+cantidad+" - errónea. Usuario: "+nombre);
+	            if(debugMode){
+	                console.warn(cantidad+" No es un numero valido!");
+	            }
+	            return false;
+	        }
+	    } else {
+	            operacionFallida();
+	            dataLog ("error", "usuario", 6, nombre+" No es cliente");
+	            if(debugMode){
+	                console.warn(nombre+" No eres un cliente de "+cajeroAutomatico.empresaPropietaria+"!");
+	            }
+	            return false;
+	    }    
+
+	}
+
+	function agregarDinero (cantidad){
+	    if (esNumero(cantidad)) {
+	        cajeroAutomatico.dineroDisponible = cajeroAutomatico.dineroDisponible + cantidad;
+	        operacionRealizada();
+	        dataLog ("info", "administrador", 7, "Ingreso de "+cantidad+cajeroAutomatico.moneda);
+	        if(debugMode){
+	            console.info("Dinero disponible en el cajero, "+cajeroAutomatico.dineroDisponible);
+	        }
+	        return true;
+	    } else {
+	        operacionFallida();
+	        dataLog ("error", "administrador", 8, "Ingreso fallido por "+cantidad+" - errónea.");
+	        if(debugMode){
+	            console.warn(cantidad+" No es un numero valido!");
+	        }
+	        return false;
+	    }
+
+	}
+
+	function quitarDinero (cantidad){
+	    if (esNumero(cantidad)) {
+	        cajeroAutomatico.dineroDisponible = cajeroAutomatico.dineroDisponible - cantidad;
+	        operacionRealizada();
+	        dataLog ("info", "administrador", 9, "Retirada de "+cantidad+cajeroAutomatico.moneda);
+	        if(debugMode){
+	            console.info("Dinero disponible en el cajero, "+cajeroAutomatico.dineroDisponible);
+	        }
+	        return true;
+	    } else {
+	        operacionFallida();
+	        dataLog ("error", "administrador", 10, "Retirada fallida por "+cantidad+" - errónea.");
+	        if(debugMode){
+	            console.warn(cantidad+" No es un numero valido!");
+	        }
+	        return false;
+	    }
+	}
+
+	function agregarCliente (nombre, lista) {
+	lista.push(nombre);
+	operacionRealizada();
+	dataLog ("info", "administrador", 11, "Ingreso de "+nombre+" a la base de datos de clientes");
+	return true;
+	}
+
+	function quitarCliente(nombre, lista) {
+		if (lista.length === 0) {
+		    if (debugMode) {
+			    console.log("La lista esta vacía.");
+		    }
+			operacionFallida();
+			dataLog ("error", "maquina", 12, "Eliminacion de "+nombre+" fallida. Base de datos, vacía.");
+			return false;
+		} else {
+			for (var i = 0; i < lista.length; i++) {
+				if(lista[i] == nombre){
+					lista.splice(i, 1);
+					if(debugMode) {
+					    console.log("El Cliente \""+nombre+"\" eliminado con éxito!");
+					    console.log(lista);
+					}
+					operacionRealizada();
+	                dataLog ("info", "administrador", 13, "Eliminado "+nombre+" de la base de datos de clientes");
+					return true;
+				} else if (i == lista.length -1){
+				    if(debugMode) {
+					    console.log("El cliente \""+nombre+"\" no encontrado!");
+				    }
+					operacionFallida();
+			        dataLog ("error", "maquina", 14, "Eliminacion de "+nombre+" fallida. Cliente inexistente.");
+				    return false;
+				}
+			}
+		}
+	}
+		return {
+		    cajeroAutomatico: "Esto es todo lo que te muestro."
+		};
+	})(window);
 ```
 
 11 (opcional) - Integrarlo con el html y bloquea el uso del de las funciones por consola
@@ -856,14 +1764,136 @@ Contamos con un sistema compuesto de un tanque principal y una cama (recipiente 
  - Sustrato: Piedra volcánica
 
 ```javascript
-    // Escribe tu solución
+	var acuApp = acuApp || {};
+
+	// Constructores
+	var constructorTanque = function (capacidad, capacidadMedida, alto, ancho, largo, dimensionesMedida, color, nivelAguaMaximo) {
+	    this.capacidad = capacidad;
+	    this.capacidadMedida = capacidadMedida;
+	    this.dimensiones = alto * ancho *largo;
+	    this.alto = alto;
+	    this.ancho = ancho;
+	    this.largo = largo;
+	    this.dimensionesMedida = dimensionesMedida;
+	    this.color = color;
+	    this.nivelAguaMaximo = nivelAguaMaximo;
+	};
+
+	var constructorCama = function (capacidad, capacidadMedida, alto, ancho, largo, dimensionesMedida, color, nivelAguaMaximo, sustrato) {
+	    this.capacidad = capacidad;
+	    this.capacidadMedida = capacidadMedida;
+	    this.dimensiones = alto * ancho *largo;
+	    this.alto = alto;
+	    this.ancho = ancho;
+	    this.largo = largo;
+	    this.medida = dimensionesMedida;
+	    this.color = color;
+	    this.nivelAguaMaximo = nivelAguaMaximo;
+	    this.sustrato = sustrato;
+	};
+
+
+	acuApp["tanque principal"] = new constructorTanque(40, "Litros", 30.5, 25.5, 51, "Cm", "Gris Claro", 2);
+	acuApp["cama principal"] = new constructorCama(10, "Litros", 10, 25.5, 51, "Cm", "Rojo", 5, "Piedra volcánica");
 ```
 
 
 2 - Añadamos el agua, para lo que necesitaremos un sistema para añadir y quitar agua, además de un desagüe automático que nos avise cuando el nivel del agua sea más alto de los esperado y evacue el sobrante.
 
 ```javascript
-    // Escribe tu solución
+	var debugMode = true;
+
+	function chivato (tipo, mensaje) {
+	    if (debugMode) {
+	        if(tipo == "warn"){
+	            console.warn(mensaje);
+	        } else {
+	            console.log(mensaje);
+	        }
+	    }
+	}
+
+	var acuApp = acuApp || {};
+
+	// Constructores
+	var constructorTanque = function (nombre, capacidad, capacidadMedida, alto, ancho, largo, dimensionesMedida, color, nivelAguaMaximo) {
+	    this.nombre = nombre;
+	    this.capacidad = capacidad;
+	    this.capacidadMedida = capacidadMedida;
+	    this.dimensiones = alto * ancho * largo;
+	    this.alto = alto;
+	    this.ancho = ancho;
+	    this.largo = largo;
+	    this.dimensionesMedida = dimensionesMedida;
+	    this.color = color;
+	    this.nivelAguaMaximo = nivelAguaMaximo;
+	    this.desagueFuncionando = false;
+	    this.nivelAgua = 0;
+	    /* Funciones */
+
+	    this.agregarAgua = function(litros){
+	        this.nivelAgua = this.nivelAgua + litros;
+	        if(this.nivelAgua >= this.nivelAguaMaximo){
+	            if(!this.desagueFuncionando){
+	                this.desagueFuncionando = true;
+	                chivato("warn", "Se activó el sistema de desagüe de emergencia en "+this.nombre);
+	            }
+	            chivato("log", "nivel actual: "+this.nivelAgua);
+	            this.quitarAgua(this.nivelAgua-this.nivelAguaMaximo);
+	        }
+	    };
+	    this.quitarAgua = function(litros){
+	        this.nivelAgua = this.nivelAgua-litros;
+	        if(this.desagueFuncionando){
+	            this.desagueFuncionando = false;
+	            chivato("log", "Se desactivo el sistema de desagüe de emergencia en "+this.nombre);
+	        }
+	        chivato("log", "nivel actual: "+this.nivelAgua);
+	    };
+	};
+
+	var constructorCama = function (nombre, capacidad, capacidadMedida, alto, ancho, largo, dimensionesMedida, color, nivelAguaMaximo, sustrato) {
+	    this.nombre = nombre;
+	    this.capacidad = capacidad;
+	    this.capacidadMedida = capacidadMedida;
+	    this.dimensiones = alto * ancho *largo;
+	    this.alto = alto;
+	    this.ancho = ancho;
+	    this.largo = largo;
+	    this.medida = dimensionesMedida;
+	    this.color = color;
+	    this.nivelAguaMaximo = nivelAguaMaximo;
+	    this.sustrato = sustrato;
+	    this.desagueFuncionando = false;
+	    this.nivelAgua = 0;
+	    /* Funciones */
+
+	    this.agregarAgua = function(litros){
+	        this.nivelAgua = this.nivelAgua + litros;
+	        if(this.nivelAgua >= this.nivelAguaMaximo){
+	            if(!this.desagueFuncionando){
+	                this.desagueFuncionando = true;
+	                chivato("warn", "Se activó el sistema de desagüe de emergencia en "+this.nombre);
+	            }
+	            chivato("log", "nivel actual: "+this.nivelAgua);
+	            this.quitarAgua(this.nivelAgua-this.nivelAguaMaximo);
+	        }
+	    };
+	    this.quitarAgua = function(litros){
+	        this.nivelAgua = this.nivelAgua-litros;
+	        if(this.desagueFuncionando){
+	            this.desagueFuncionando = false;
+	            chivato("log", "Se desactivo el sistema de desagüe de emergencia en "+this.nombre);
+	        }
+	        chivato("log", "nivel actual: "+this.nivelAgua);
+	    };
+	};
+
+
+	acuApp.tanque1 = new constructorTanque("Tanque principal",40, "Litros", 30.5, 25.5, 51, "Cm", "Gris Claro", 2);
+	acuApp.cama1 = new constructorCama("Cama principal", 10, "Litros", 10, 25.5, 51, "Cm", "Rojo", 5, "Piedra volcánica");
+	acuApp.cama1.agregarAgua(100);
+	acuApp.tanque1.agregarAgua(987);
 ```
 
 
@@ -872,7 +1902,146 @@ Contamos con un sistema compuesto de un tanque principal y una cama (recipiente 
 - Incluir una función para quitar peces y vegetales.
 
 ```javascript
-    // Escribe tu solución
+	var debugMode = true;
+
+	function chivato (tipo, mensaje) {
+	    if (debugMode) {
+	        if(tipo == "warn"){
+	            console.warn(mensaje);
+	        } else {
+	            console.log(mensaje)
+	        }
+	    }
+	};
+
+	var acuApp = acuApp || {};
+
+	// Constructores
+	var constructorTanque = function (nombre, capacidad, capacidadMedida, alto, ancho, largo, dimensionesMedida, color, nivelAguaMaximo) {
+	    this.nombre = nombre;
+	    this.capacidad = capacidad;
+	    this.capacidadMedida = capacidadMedida;
+	    this.dimensiones = alto * ancho * largo;
+	    this.alto = alto;
+	    this.ancho = ancho;
+	    this.largo = largo;
+	    this.dimensionesMedida = dimensionesMedida;
+	    this.color = color;
+	    this.nivelAguaMaximo = nivelAguaMaximo;
+	    this.desagueFuncionando = false;
+	    this.nivelAgua = 0;
+	    this.peces = {};
+	    /* Funciones */
+	    this.agregarPez = function (nombre, clase, peso, espacio, lugar) {
+	        this.peces[nombre] = {
+	            tipo:"pez",
+	            clase: clase,
+	            peso: peso || 100,
+	            pesoMedida: "gramos",
+	            espacio: espacio || 0.05,
+	            espacioMedida: "m3",
+	            lugar: lugar || "Tanque principal"
+	        };
+	    };
+
+	    this.quitarPez = function (nombre) {
+	        var temp = this.peces[nombre];
+	        delete this.peces[nombre];
+	        return temp;
+	    };
+
+	    this.agregarAgua = function(litros){
+	        this.nivelAgua = this.nivelAgua + litros;
+	        if(this.nivelAgua >= this.nivelAguaMaximo){
+	            if(!this.desagueFuncionando){
+	                this.desagueFuncionando = true;
+	                chivato("warn", "Se activó el sistema de desagüe de emergencia en "+this.nombre);
+	            }
+	            chivato("log", "nivel actual: "+this.nivelAgua);
+	            this.quitarAgua(this.nivelAgua-this.nivelAguaMaximo);
+	        }
+	    };
+
+	    this.quitarAgua = function(litros){
+	        this.nivelAgua = this.nivelAgua-litros;
+	        if(this.desagueFuncionando){
+	            this.desagueFuncionando = false;
+	            chivato("log", "Se desactivo el sistema de desagüe de emergencia en "+this.nombre);
+	        }
+	        chivato("log", "nivel actual: "+this.nivelAgua);
+	    };
+	};
+
+	var constructorCama = function (nombre, capacidad, capacidadMedida, alto, ancho, largo, dimensionesMedida, color, nivelAguaMaximo, sustrato) {
+	    this.nombre = nombre;
+	    this.capacidad = capacidad;
+	    this.capacidadMedida = capacidadMedida;
+	    this.dimensiones = alto * ancho *largo;
+	    this.alto = alto;
+	    this.ancho = ancho;
+	    this.largo = largo;
+	    this.medida = dimensionesMedida;
+	    this.color = color;
+	    this.nivelAguaMaximo = nivelAguaMaximo;
+	    this.sustrato = sustrato;
+	    this.desagueFuncionando = false;
+	    this.nivelAgua = 0;
+	    this.plantas = {};
+	    /* Funciones */
+
+	    this.agregarPlanta = function (nombre, clase, frutosDisponibles, estadoActual, espacio, lugar) {
+	    this.plantas[nombre] = {
+	        nombre: nombre,
+	        tipo: "planta",
+	        clase: clase,
+	        frutosDisponibles: frutosDisponibles,
+	        estadoActual: estadoActual,
+	        espacio: espacio || 0.05,
+	        espacioMedida: "m3",
+	        lugar: lugar || "Cama principal"
+	        };
+	    };
+
+	    this.quitarPlanta = function (nombre) {
+	        var temp = this.plantas[nombre];
+	        delete this.plantas[nombre];
+	        return temp;
+	    };
+
+	    this.agregarAgua = function(litros){
+	        this.nivelAgua = this.nivelAgua + litros;
+	        if(this.nivelAgua >= this.nivelAguaMaximo){
+	            if(!this.desagueFuncionando){
+	                this.desagueFuncionando = true;
+	                chivato("warn", "Se activó el sistema de desagüe de emergencia en "+this.nombre);
+	            }
+	            chivato("log", "nivel actual: "+this.nivelAgua);
+	            this.quitarAgua(this.nivelAgua-this.nivelAguaMaximo);
+	        }
+	    };
+	    this.quitarAgua = function(litros){
+	        this.nivelAgua = this.nivelAgua-litros;
+	        if(this.desagueFuncionando){
+	            this.desagueFuncionando = false;
+	            chivato("log", "Se desactivo el sistema de desagüe de emergencia en "+this.nombre);
+	        }
+	        chivato("log", "nivel actual: "+this.nivelAgua);
+	    };
+	};
+
+
+	acuApp.tanque1 = new constructorTanque("Tanque principal",40, "Litros", 30.5, 25.5, 51, "Cm", "Gris Claro", 2);
+	acuApp.cama1 = new constructorCama("Cama principal", 10, "Litros", 10, 25.5, 51, "Cm", "Rojo", 5, "Piedra volcánica");
+	acuApp.cama1.agregarPlanta("zanahoria1", "hortaliza", false, "planton");
+	acuApp.cama1.agregarPlanta("zanahoria2", "hortaliza", true, "cosechable");
+	acuApp.cama1.agregarPlanta("zanahoria3", "hortaliza", false, "semilla");
+	acuApp.cama1.agregarPlanta("zanahoria4", "hortaliza", false, "semilla");
+	var zanahoriaDescartada = acuApp.cama1.quitarPlanta("zanahoria4");
+	acuApp.tanque1.agregarPez("Koi1", "aguas fria", 200);
+	acuApp.tanque1.agregarPez("Koi2", "aguas fria", 200);
+	acuApp.tanque1.agregarPez("pleco", "invasora", 400, 0.5);
+	acuApp.tanque1.agregarPez("pleco2", "invasora", 1000, 1.5);
+	var plecoDescartado = acuApp.tanque1.quitarPez("pleco2");
 ```
 
 
@@ -1547,7 +2716,7 @@ Contamos con un sistema compuesto de un tanque principal y una cama (recipiente 
 	- Cloro (CL2 mg/l)
 
 ```javascript
-    	var debugMode = true;
+	var debugMode = true;
 
 	function chivato (tipo, mensaje) {
 	    if (debugMode) {
