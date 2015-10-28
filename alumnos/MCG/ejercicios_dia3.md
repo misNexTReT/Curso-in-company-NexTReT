@@ -19,7 +19,13 @@
 Nota: http://openweathermap.org te será de gran ayuda, busca la solución al error 401
 
 ```javascript
-  // Tu solución
+  // Tu solución 
+  // api.openweathermap.org/data/2.5/forecast/city?id=3117735&APPID=1111111111 
+  function mostrarTiempoMadrid(){
+    $.ajax({url: "http://openweathermap.org/city/3117735&APPID=1111111111", success: function(result){
+        console.log(result);
+    }});
+  }
 ```
 
 
@@ -29,6 +35,11 @@ Encontraremos problemas de CORS
 
 ```javascript
   // Tu solución
+  function mostrarTiempoMadrid(){
+    $.ajax({url: "https://crossorigin.me/http://openweathermap.org/city/3117735&APPID=1111111111", success: function(result){
+        console.log(result);
+    }});
+  }
 ```
 
 
