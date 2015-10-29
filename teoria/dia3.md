@@ -97,23 +97,88 @@
 1 - Sacar en el html la respuesta de OMDB para la pelicula Hackers
 
 ```javascript
-  // Tu solución
+    function peticionAjax (movieName) {
+	  var xmlHttp = new XMLHttpRequest(),
+	                cURL = 'http://www.omdbapi.com/?t='+movieName+'&y=&plot=short&r=json';
+	
+	            xmlHttp.onreadystatechange = function () {
+	
+	                if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+	                    var datos = (JSON.parse(xmlHttp.responseText));
+	                    var contenido = "";
+	                    contenido += "<h1>"+datos.Title+"</h1>"
+	                    contenido += "<p>"+datos.Plot+"</p>"
+	                    document.body.innerHTML = contenido;
+	                } else if (xmlHttp.readyState === 4 && xmlHttp.status === 404) {
+	                    console.error("ERROR! 404");
+	                    console.info(JSON.parse(xmlHttp.responseText));
+	                }
+	            };
+	
+	            xmlHttp.open( "GET", cURL, true );
+	            xmlHttp.send();
+	}
+	
+	peticionAjax("Hackers");
 ```
 
 2 - Sacar en el html el tiempo meteorológico de Madrid, Barcelona y Valencia. 
 Nota: http://openweathermap.org te será de gran ayuda, busca la solución al error 401
 
 ```javascript
-  // Tu solución
+	  var contenido = "";
+  	function temperaturaCiudad (ciudad) {
+        var xmlHttp = new XMLHttpRequest(),
+        APIKey = 'bd82977b86bf27fb59a04b61b657fb6f',
+        cURL = 'http://api.openweathermap.org/data/2.5/weather?q='+ciudad+'&APPID='+APIKey;
+    
+        xmlHttp.onreadystatechange = function () {
+            if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+                var datos = (JSON.parse(xmlHttp.responseText));
+	              contenido += "<h1>"+datos.name+"</h1>"
+	              contenido += "<p>"+datos.weather[0].description+"</p>"
+	              document.body.innerHTML = contenido;
+            } else if (xmlHttp.readyState === 4 && xmlHttp.status === 404) {
+                datos = JSON.parse(xmlHttp.responseText);
+                console.error("ERROR! 404");
+                console.info(datos);
+            }
+        };
+    
+        xmlHttp.open( "GET", cURL, true );
+        xmlHttp.send();
+    }
+    
+    temperaturaCiudad("Madrid");
+    temperaturaCiudad("Barcelona");
+    temperaturaCiudad("Valencia");
 ```
 
 
 3 - Jugando con datos abiertos, saquemos los detalles de todos los cuadros eléctricos de Gijón por consola.
 Encontraremos problemas de CORS
 
-
 ```javascript
-  // Tu solución
+    function peticionAjax (url) {
+	  var xmlHttp = new XMLHttpRequest();
+	
+	            xmlHttp.onreadystatechange = function () {
+	
+	                if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+	                    var datos = (JSON.parse(xmlHttp.responseText));
+                        console.log(datos)
+	                    document.body.innerHTML = contenido;
+	                } else if (xmlHttp.readyState === 4 && xmlHttp.status === 404) {
+	                    console.error("ERROR! 404");
+	                    console.info(JSON.parse(xmlHttp.responseText));
+	                }
+	            };
+	
+	            xmlHttp.open( "GET", url, true );
+	            xmlHttp.send();
+	}
+	
+	peticionAjax("http://crossorigin.me/http://opendata.gijon.es/descargar.php?id=163&tipo=JSON");
 ```
 
 
@@ -123,9 +188,7 @@ Encontraremos problemas de CORS
 
 ![Captura de localizaciones](https://github.com/UlisesGascon/bicimad-api/blob/master/ejemplos/img/gmaps_bicimad_station.png?raw=true)
 
-```javascript
-  // tu solución aqui
-```
+- [solución](../otros/posicionamiento)
 
 - [BiciMad Cercania](http://bicimad-api.herokuapp.com/api-v1/locations/nearest/?lat=40.418889&long=-3.691944&distance=1000000000)
 - [BiciMad Localizaciones](http://bicimad-api.herokuapp.com/api-v1/locations/)
@@ -134,16 +197,13 @@ Encontraremos problemas de CORS
 
 5 - Práctica llamadas AJAX usando la API Pública de RTVE.
 
-```javascript
-  // tu solución aqui
-```
+- [Solución](http://ulisesgascon.github.io/RTVE-API/)
 
 6 - Desarrolla una versión mejorada de [MovieFire](https://github.com/arvindr21/movieFire) (Backbone y JS) incluyendo llamadas AJAX a la base de datos de IMBD para enriquecer los datos, usando [OMDb API](http://omdbapi.com/). 
 El ejercicio original utiliza Firebase como base de datos. Puedes encontrar la documentación [aqui](https://www.firebase.com/docs/)
 
-```javascript
-  // tu solución aqui o en tu carpeta
-```
+
+- [Solución](../otros/movieFire)
 
 
 ### Nodejs
@@ -469,7 +529,7 @@ Instalamos las dependencias en el proyecto:
 
 **Ejercicio**
 
-1 - Manejar nuestro sistema acuapónico o nuestro cajero a traves de peticiones HTTP de una manera rudimentaria.
+1 - Manejar nuestro sistema acuaponico o nuestro cajero a traves de peticiones HTTP de una manera rudimentaria.
 
 ```javascript
     // Tu solución
