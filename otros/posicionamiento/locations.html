@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>BICIMAD - Localizaciones</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css">
+</head>
+<body>
+    <div id="locations">
+        <h1>Cargando...</h1>
+    </div>
+    <table id="locations-table" class="display" width="100%"></table>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $.ajax({
+                dataType: "json",
+                url: 'http://bicimad-api.herokuapp.com/api-v1/locations/',
+            })
+            .done(function(datos, textStatus, jqXHR) {
+
+                var dataSet = [];
+                datos = datos.locations;
+
+                for (var i = 0; i < datos.length; i++) {
+                    dataSet.push([parseInt(datos[i].idestacion, 10), datos[i].nombre, datos[i].direccion, parseInt(datos[i].libres, 10), parseFloat(datos[i].longitud, 10), parseFloat(datos[i].latitud, 10)]);
+                }
+
+                $('#locations').hide();
+                $('#locations-table').DataTable({
+                    data: dataSet,
+                    columns: [{
+                        title: "ID."
+                    }, {
+                        title: "Nombre"
+                    }, {
+                        title: "Dirección"
+                    }, {
+                        title: "Libres"
+                    }, {
+                        title: "Lon"
+                    }, {
+                        title: "Lat"
+                    }]
+                });
+            })
+            .fail(function(jqXHR, textStatus, errorThrown) {
+                $('#locations').html("<h1>La solicitud a fallado</h1>");
+            });
+    </script>
+</body>
+</html>
